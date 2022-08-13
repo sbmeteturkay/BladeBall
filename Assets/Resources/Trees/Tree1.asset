@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Tree1
   m_EditorClassIdentifier: 
   health: 12
-  currentHealth: 12
+  currentHealth: 0
   color: {r: 1, g: 1, b: 1, a: 1}
-  treeState: 0
+  treeState: 3
