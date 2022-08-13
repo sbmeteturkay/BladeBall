@@ -4,26 +4,35 @@ using UnityEngine;
 
 public class TreeUnit : MonoBehaviour
 {
-    [SerializeField] Tree tree;
+    public Tree tree;
+    [Header("Parts to being destructed")]
     [SerializeField] Transform TopLeafs;
     [SerializeField] Transform BotLeafs;
     [SerializeField] Transform Wood;
+    [Header("LowPoly version of trees without any rigidbodys or multiple meshes for performance")]
     [SerializeField] GameObject StaticTree;
+    [Header("Colliders before and after destruction")]
+    [SerializeField] Collider fullTree;
+    [SerializeField] Collider wood;
+    Tree copiedTree;
     private void Start()
     {
-        tree.currentHealth = tree.health;
-        tree.treeState = TreeState.full;
+        copiedTree = ScriptableObject.CreateInstance<Tree>();
+        copiedTree.color = tree.color;
+        copiedTree.currentHealth = tree.currentHealth;
+        copiedTree.health = tree.health;
+        copiedTree.treeState = tree.treeState;
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Blade") { 
-            BladeAction.Instance.DoDamage(tree);
+            BladeAction.Instance.DoDamage(copiedTree);
             CheckState();
         }
     }
     void CheckState()
     {
-        switch (tree.treeState)
+        switch (copiedTree.treeState)
         {
             case TreeState.full:
                 break;
@@ -32,9 +41,12 @@ public class TreeUnit : MonoBehaviour
                 break;
             case TreeState.chopped:
                 OpenChildRigidbodys(BotLeafs);
+                fullTree.enabled = false;
+                wood.enabled = true;
                 break;
             case TreeState.destroyed:
                 OpenChildRigidbodys(Wood);
+                Helpers.Wait(this, 2f, () => { StaticTree.transform.parent.gameObject.SetActive(false); });
                 break;
             default:
                 break;

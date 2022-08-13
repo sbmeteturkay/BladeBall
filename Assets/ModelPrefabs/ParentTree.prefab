@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6610845847218640386}
   - component: {fileID: 2957476651507366794}
+  - component: {fileID: 9154923339904379851}
   m_Layer: 0
   m_Name: ParentTree
   m_TagString: Tree
@@ -46,6 +47,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tree: {fileID: 11400000, guid: 95591ab817dd35344b89fc813ed26b85, type: 2}
+  TopLeafs: {fileID: 0}
+  BotLeafs: {fileID: 0}
+  Wood: {fileID: 0}
+  StaticTree: {fileID: 0}
+--- !u!136 &9154923339904379851
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1283950592815825593}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.7549707
+  m_Height: 4.7783923
+  m_Direction: 1
+  m_Center: {x: -0.0067077875, y: 1.8891962, z: -0.12532622}
 --- !u!1 &5832033694270620426
 GameObject:
   m_ObjectHideFlags: 0
