@@ -21,7 +21,7 @@ namespace JahnStar.AreaSpawner
         private void Update()
         {
             if (!spawner) spawner = transform.root.GetComponent<AreaSpawner>();
-            if (!lineRenderer) 
+            if (!lineRenderer)
             {
                 if (GetComponent<LineRenderer>()) lineRenderer = GetComponent<LineRenderer>();
                 else
@@ -48,7 +48,7 @@ namespace JahnStar.AreaSpawner
         }
         public void ResizePoint(float pointSize, float lineThickness)
         {
-            if (lineRenderer) 
+            if (lineRenderer)
             {
                 pointHeight = lineThickness / 2;
                 lineRenderer.startWidth = lineRenderer.endWidth = lineThickness;

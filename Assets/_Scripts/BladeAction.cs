@@ -43,7 +43,6 @@ public class BladeAction : StaticInstance<BladeAction>
                 {
                     tree.currentHealth -= blade.damage;
                 }
-                CheckTreeHealth(tree);
                 break;
             default:
                 break;
@@ -60,21 +59,6 @@ public class BladeAction : StaticInstance<BladeAction>
     private void OnTriggerExit(Collider other)
     {
         PlayerState.Instance.ChangeState(BladeState.BladeOff);
-    }
-    void CheckTreeHealth(Tree tree)
-    {
-        if (tree.currentHealth <= 0)
-        {
-            tree.treeState = TreeState.destroyed;
-        }
-        else if(tree.currentHealth<=tree.health/3*1)
-        {
-            tree.treeState = TreeState.chopped;
-        }
-        else if (tree.currentHealth <= tree.health / 3 * 2)
-        {
-            tree.treeState = TreeState.leafless;
-        }
     }
 }
 

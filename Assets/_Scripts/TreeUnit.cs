@@ -22,16 +22,13 @@ public class TreeUnit : MonoBehaviour
         copiedTree.currentHealth = tree.currentHealth;
         copiedTree.health = tree.health;
         copiedTree.treeState = tree.treeState;
+
+        copiedTree.OnEventChange += CopiedTree_OnEventChange;
     }
-    private void OnTriggerEnter(Collider other)
+
+    private void CopiedTree_OnEventChange(TreeState obj)
     {
-        if (other.gameObject.name == "Blade") { 
-            BladeAction.Instance.DoDamage(copiedTree);
-            CheckState();
-        }
-    }
-    void CheckState()
-    {
+        Debug.Log("EventChange");
         switch (copiedTree.treeState)
         {
             case TreeState.full:
@@ -46,10 +43,38 @@ public class TreeUnit : MonoBehaviour
                 break;
             case TreeState.destroyed:
                 OpenChildRigidbodys(Wood);
+                wood.enabled = false;
                 Helpers.Wait(this, 2f, () => { StaticTree.transform.parent.gameObject.SetActive(false); });
                 break;
             default:
+                Debug.Log("EventState inside");
                 break;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name == "Blade") { 
+            BladeAction.Instance.DoDamage(copiedTree);
+            CheckState();
+        }
+    }
+    void CheckState()
+    {
+        Debug.Log("CheckState");
+        if (copiedTree.currentHealth <= tree.health / 3 * 2)
+        {
+            Debug.Log("CheckState inside");
+            copiedTree.SetState(TreeState.leafless);
+            Debug.Log(copiedTree.treeState);
+        }
+        if (copiedTree.currentHealth <= tree.health / 3 * 1)
+        {
+            copiedTree.SetState(TreeState.chopped);
+        }
+        if (copiedTree.currentHealth <= 0)
+        {
+            copiedTree.SetState(TreeState.destroyed);
         }
     }
     void OpenChildRigidbodys(Transform parent)

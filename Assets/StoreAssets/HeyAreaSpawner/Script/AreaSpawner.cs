@@ -52,7 +52,7 @@ namespace JahnStar.AreaSpawner
         }
         public void NewPoint(Vector3 position, bool newArea)
         {
-            if (transform.childCount == 0 || newArea) 
+            if (transform.childCount == 0 || newArea)
             {
                 NewArea(position);
                 ChooseArea(transform.childCount - 1);
