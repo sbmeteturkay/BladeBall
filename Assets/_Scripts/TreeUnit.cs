@@ -28,7 +28,6 @@ public class TreeUnit : MonoBehaviour
 
     private void CopiedTree_OnEventChange(TreeState obj)
     {
-        Debug.Log("EventChange");
         switch (copiedTree.treeState)
         {
             case TreeState.full:
@@ -62,12 +61,9 @@ public class TreeUnit : MonoBehaviour
     }
     void CheckState()
     {
-        Debug.Log("CheckState");
         if (copiedTree.currentHealth <= tree.health / 3 * 2)
         {
-            Debug.Log("CheckState inside");
             copiedTree.SetState(TreeState.leafless);
-            Debug.Log(copiedTree.treeState);
         }
         if (copiedTree.currentHealth <= tree.health / 3 * 1)
         {

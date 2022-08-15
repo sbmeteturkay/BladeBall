@@ -26,6 +26,9 @@ public class BladeAction : StaticInstance<BladeAction>
             case BladeState.BladeOpen:
                 bladeAnimation.SetBool("bladeOpen", true);
                 break;
+            case BladeState.Full:
+                bladeAnimation.SetBool("bladeOpen", false);
+                break;
             default:
                 break;
         }
@@ -48,18 +51,17 @@ public class BladeAction : StaticInstance<BladeAction>
             default:
                 break;
         }
-        Debug.Log(tree.treeState);
-        Debug.Log(tree.currentHealth);
 
     }
     private void OnTriggerStay(Collider other)
     {
-        if(other.tag=="Tree")
+        if(other.tag=="Tree"&&PlayerState.Instance.State!=BladeState.Full)
             PlayerState.Instance.ChangeState(BladeState.BladeOpen);
     }
     private void OnTriggerExit(Collider other)
     {
-        PlayerState.Instance.ChangeState(BladeState.BladeOff);
+        if(PlayerState.Instance.State == BladeState.BladeOpen)
+            PlayerState.Instance.ChangeState(BladeState.BladeOff);
     }
 }
 

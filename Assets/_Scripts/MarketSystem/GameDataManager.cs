@@ -35,6 +35,8 @@ public static class GameDataManager
 
 	static GameDataManager()
 	{
+		if(Application.isEditor)
+			BinarySerializer.DeleteDataFile("player-data.txt");
 		LoadPlayerData();
 		LoadCharactersShopData();
 	}
@@ -72,10 +74,15 @@ public static class GameDataManager
 
 	public static void AddCoins(int amount,CollectType type)
 	{
-        switch (type)
-        {
-            case CollectType.wood:
-				playerData.woods += amount;
+		switch (type)
+		{
+			case CollectType.wood:
+					if (PlayerUnit.Instance.CheckCapacity() >= amount)
+						playerData.woods += amount;
+					else if (PlayerUnit.Instance.CheckCapacity() - amount < 0) { 
+						playerData.woods += PlayerUnit.Instance.CheckCapacity();
+						PlayerState.Instance.ChangeState(BladeState.Full); 
+					}
 				break;
             case CollectType.coin:
 				playerData.coins += amount;

@@ -9,7 +9,7 @@ public class Chopper : ScriptableObject
     public float scale=1;
     public float energy = 1;
     public float currentEnergy = 1;
-    public float capacity = 10;
+    public int capacity = 10;
     public void SetMovementSpeed(int value)
     {
         movementSpeed = value;
@@ -17,7 +17,7 @@ public class Chopper : ScriptableObject
     public void SetScale(int value)
     {
         scale = value;
-        capacity = scale * 10;
+        capacity =(int)scale* 10;
     }
     public void SetEnergy(int value)
     {

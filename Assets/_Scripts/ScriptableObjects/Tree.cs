@@ -14,7 +14,6 @@ public class Tree : ScriptableObject
     public int givenGold = 1;
     public void SetState(TreeState _treeState)
     {
-        Debug.Log("SetState inside");
         treeState = _treeState;
         OnEventChange?.Invoke(treeState);
     }

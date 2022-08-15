@@ -4123,6 +4123,8 @@ GameObject:
   - component: {fileID: 392740237}
   - component: {fileID: 392740236}
   - component: {fileID: 392740235}
+  - component: {fileID: 392740238}
+  - component: {fileID: 392740239}
   m_Layer: 0
   m_Name: ShopDoll
   m_TagString: Untagged
@@ -4153,10 +4155,10 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392740233}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 2, z: 5}
+  m_Size: {x: 1.5, y: 2, z: 1.5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &392740236
 MeshRenderer:
@@ -4207,6 +4209,32 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 392740233}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &392740238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392740233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52cc0fe596394b642a088bf77dd843de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopPanel: {fileID: 1563187867}
+--- !u!65 &392740239
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392740233}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 2, z: 4}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &395453764 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5247993172125717764, guid: 5e4277ae0ca139a40a500e5d2ba7ef91, type: 3}
@@ -16490,6 +16518,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5247993172125717764, guid: 5e4277ae0ca139a40a500e5d2ba7ef91, type: 3}
   m_PrefabInstance: {fileID: 1478108647}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1479601829 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8374066024234722473, guid: 1ff23f4da58039a4eaa8cd7788ba30f3, type: 3}
+  m_PrefabInstance: {fileID: 730306512}
+  m_PrefabAsset: {fileID: 0}
+--- !u!65 &1479601831
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479601829}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3, y: 3, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1489298935 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5247993172125717764, guid: 5e4277ae0ca139a40a500e5d2ba7ef91, type: 3}
@@ -16838,10 +16884,9 @@ GameObject:
   - component: {fileID: 1525187692}
   - component: {fileID: 1525187695}
   - component: {fileID: 1525187696}
-  - component: {fileID: 1525187697}
   m_Layer: 3
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16930,19 +16975,6 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &1525187697
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1525187690}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 4, y: 1, z: 4}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1525187698
 MonoBehaviour:
@@ -17457,6 +17489,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1563187867 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1303612170525932366, guid: a7d886f3fb61079408fd94bbbcb5354d, type: 3}
+  m_PrefabInstance: {fileID: 1303612171467452686}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1565609356
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23225,7 +23262,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1303612170525932366, guid: a7d886f3fb61079408fd94bbbcb5354d, type: 3}
       propertyPath: m_Name
-      value: UpgradeCanvas
+      value: ShopCanvas
       objectReference: {fileID: 0}
     - target: {fileID: 1303612170525932366, guid: a7d886f3fb61079408fd94bbbcb5354d, type: 3}
       propertyPath: m_IsActive

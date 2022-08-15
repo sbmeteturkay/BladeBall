@@ -3,8 +3,6 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
-
-//This code is taken from https://github.com/herbou/Unity_ShoppingSystem
 /// <summary>
 /// BinarySerializer is tool to save your game data in files as binary
 /// so that no body can read it or modify it, 
@@ -102,6 +100,36 @@ public class BinarySerializer
 	public static bool HasSaved(string filename)
 	{
 		return File.Exists(GetFilePath(filename));
+	}
+
+	/// <summary>
+	/// Delete a data file.
+	/// </summary>
+	/// <param name="filename">the file where you saved data</param>
+	/// <returns></returns>
+	public static void DeleteDataFile(string filename)
+	{
+		if (HasSaved(filename))
+			File.Delete(GetFilePath(filename));
+	}
+
+	/// <summary>
+	/// Delete all data files.
+	/// </summary>
+	/// <returns></returns>
+	public static void DeleteAllDataFiles()
+	{
+		if (Directory.Exists(GetDirectoryPath()))
+			Directory.Delete(GetDirectoryPath(), true);
+	}
+
+	/// <summary>
+	/// Get the path where data is saved.
+	/// </summary>
+	/// <returns></returns>
+	public static string GetDataPath()
+	{
+		return GetDirectoryPath() + "/";
 	}
 
 	static string GetDirectoryPath()
