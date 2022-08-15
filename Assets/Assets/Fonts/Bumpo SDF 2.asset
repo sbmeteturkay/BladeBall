@@ -9,7 +9,7 @@ Material:
   m_PrefabAsset: {fileID: 0}
   m_Name: Bumpo Atlas Material
   m_Shader: {fileID: 4800000, guid: 68e6db2ebdc24f95958faec2be5558d6, type: 3}
-  m_ShaderKeywords: UNDERLAY_ON
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -51,7 +51,7 @@ Material:
     - _ColorMask: 15
     - _CullMode: 0
     - _Diffuse: 0.5
-    - _FaceDilate: 0
+    - _FaceDilate: -0.8
     - _FaceUVSpeedX: 0
     - _FaceUVSpeedY: 0
     - _GlowInner: 0.05
@@ -62,15 +62,15 @@ Material:
     - _LightAngle: 3.1416
     - _MaskSoftnessX: 0
     - _MaskSoftnessY: 0
-    - _OutlineSoftness: 0
+    - _OutlineSoftness: 0.42
     - _OutlineUVSpeedX: 0
     - _OutlineUVSpeedY: 0
     - _OutlineWidth: 0
     - _PerspectiveFilter: 0.875
     - _Reflectivity: 10
     - _ScaleRatioA: 0.9
-    - _ScaleRatioB: 0.73125
-    - _ScaleRatioC: 0.365625
+    - _ScaleRatioB: 1.4512501
+    - _ScaleRatioC: 0.72562504
     - _ScaleX: 1
     - _ScaleY: 1
     - _ShaderFlags: 0
@@ -160,11 +160,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: Bumpo SDF
+  m_Name: Bumpo SDF 2
   m_EditorClassIdentifier: 
-  hashCode: 1107699412
+  hashCode: -601149498
   material: {fileID: -7983633141542630292}
-  materialHashCode: 814539124
+  materialHashCode: -1065280986
   m_Version: 1.1.0
   m_SourceFontFileGUID: 8b62949bb7d5f49a0bb683f894d77200
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: 8b62949bb7d5f49a0bb683f894d77200, type: 3}
