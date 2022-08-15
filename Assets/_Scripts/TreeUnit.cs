@@ -45,6 +45,7 @@ public class TreeUnit : MonoBehaviour
                 OpenChildRigidbodys(Wood);
                 wood.enabled = false;
                 Helpers.Wait(this, 2f, () => { StaticTree.transform.parent.gameObject.SetActive(false); });
+                GameDataManager.AddCoins(copiedTree.givenGold,CollectType.wood);
                 break;
             default:
                 Debug.Log("EventState inside");

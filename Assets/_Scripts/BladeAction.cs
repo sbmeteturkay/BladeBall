@@ -5,10 +5,11 @@ using UnityEngine;
 public class BladeAction : StaticInstance<BladeAction>
 {
     [SerializeField] Animator bladeAnimation;
-    [SerializeField] Blade blade;
+    Blade blade;
     BladeState state;
     void Start()
     {
+        blade = PlayerUnit.Instance.chopper.blade;
         PlayerState.OnEventChange += PlayerState_OnEventChange;
     }
 
