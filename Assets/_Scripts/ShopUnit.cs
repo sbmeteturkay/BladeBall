@@ -6,7 +6,7 @@ public class ShopUnit : MonoBehaviour
 {
     [SerializeField] GameObject shopPanel;
     // Start is called before the first frame update
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.name == "NPCTriggerCollider")
             shopPanel.SetActive(true);

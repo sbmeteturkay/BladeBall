@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 3
   speed: 1
-  energy: 10
   bladeModelIndex: 1
+  image: {fileID: 21300000, guid: 8c977800c43134e86b394adcc3a3e872, type: 3}
+  price: 50
+  isPurchased: 1

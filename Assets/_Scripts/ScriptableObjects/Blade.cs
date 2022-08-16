@@ -11,6 +11,7 @@ public class Blade : ScriptableObject
     public Blades bladeModelIndex;
 
     [Header("Market")]
+    public Sprite image;
     public int price;
     public bool isPurchased;
 }

@@ -33,9 +33,18 @@ public class GameSharedUI : MonoBehaviour
 		for (int i = 0; i < coinsUIText.Length; i++)
 		{
 			SetCoinsText(coinsUIText[i], GameDataManager.GetCoins());
+		}
+		for (int i = 0; i < gemUIText.Length; i++)
+		{
 			SetCoinsText(gemUIText[i], GameDataManager.GetGem());
+		}
+		for (int i = 0; i < woodUIText.Length; i++)
+		{
 			SetCoinsText(woodUIText[i], GameDataManager.GetWood());
 		}
+
+		
+		
 		UpdateWoodFillAmount();
 	}
 
