@@ -36,7 +36,7 @@ public static class GameDataManager
 	static GameDataManager()
 	{
 		if(Application.isEditor)
-			BinarySerializer.DeleteDataFile("player-data.txt");
+			//BinarySerializer.DeleteDataFile("player-data.txt");
 		LoadPlayerData();
 		LoadCharactersShopData();
 	}
@@ -81,7 +81,6 @@ public static class GameDataManager
 						playerData.woods += amount;
 					else if (PlayerUnit.Instance.CheckCapacity() - amount < 0) { 
 						playerData.woods += PlayerUnit.Instance.CheckCapacity();
-						PlayerState.Instance.ChangeState(BladeState.Full); 
 					}
 				break;
             case CollectType.coin:
@@ -105,6 +104,7 @@ public static class GameDataManager
 			case CollectType.wood:
 				return (playerData.woods >= amount);
 			case CollectType.coin:
+				Debug.Log(playerData.coins >= amount);
 				return (playerData.coins >= amount);
 			case CollectType.gem:
 				return (playerData.gems >= amount);
@@ -113,9 +113,23 @@ public static class GameDataManager
 		}
 	}
 
-	public static void SpendCoins(int amount)
+	public static void SpendCoins(int amount,CollectType type)
 	{
-		playerData.coins -= amount;
+        switch (type)
+        {
+            case CollectType.wood:
+				playerData.woods -= amount;
+				break;
+            case CollectType.coin:
+				playerData.coins -= amount;
+				break;
+            case CollectType.gem:
+				playerData.gems -= amount;
+				break;
+            default:
+                break;
+        }
+        
 		SavePlayerData();
 		GameSharedUI.Instance.UpdateCoinsUIText();
 	}
@@ -123,13 +137,13 @@ public static class GameDataManager
 	static void LoadPlayerData()
 	{
 		playerData = BinarySerializer.Load<PlayerData>("player-data.txt");
-		UnityEngine.Debug.Log("<color=green>[PlayerData] Loaded.</color>");
+		//UnityEngine.Debug.Log("<color=green>[PlayerData] Loaded.</color>");
 	}
 
 	static void SavePlayerData()
 	{
 		BinarySerializer.Save(playerData, "player-data.txt");
-		UnityEngine.Debug.Log("<color=magenta>[PlayerData] Saved.</color>");
+		//UnityEngine.Debug.Log("<color=magenta>[PlayerData] Saved.</color>");
 	}
 
 	//Characters Shop Data Methods -----------------------------------------------------------------------------
@@ -159,5 +173,9 @@ public static class GameDataManager
 	{
 		BinarySerializer.Save(charactersShopData, "characters-shop-data.txt");
 		UnityEngine.Debug.Log("<color=magenta>[CharactersShopData] Saved.</color>");
+	}
+	public static float WoodFillAmount()
+    {
+		return (float)GameDataManager.GetWood() / (float)PlayerUnit.Instance.chopper.capacity;
 	}
 }

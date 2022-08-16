@@ -12,22 +12,29 @@ public class PlayerState : StaticInstance<PlayerState>
     public void ChangeState(BladeState bladeState)
     {
         State = bladeState;
-        Debug.Log(State);
+        
         // fast switch with enum sw(tab)(tab)enumVariableName(tab)(downArrow)
+
+        if (PlayerUnit.Instance.CheckCapacity() == 0 && State != BladeState.Full)
+        {
+            ChangeState(BladeState.Full);
+            return;
+        }
         switch (bladeState)
         {
             case BladeState.Standing:
-                if (PlayerUnit.Instance.CheckCapacity() == 0)
-                {
-                    ChangeState(BladeState.Full);
-                }
+                break;
+            case BladeState.BladeOff:
                 break;
             case BladeState.BladeOpen:
+                break;
+            case BladeState.Full:
                 break;
             default:
                 break;
         }
         OnEventChange?.Invoke(bladeState);
+        Debug.Log(State);
     }
 
 }

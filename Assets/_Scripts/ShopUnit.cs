@@ -8,12 +8,12 @@ public class ShopUnit : MonoBehaviour
     // Start is called before the first frame update
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.name == "NPCTriggerCollider")
             shopPanel.SetActive(true);
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.name== "NPCTriggerCollider")
             shopPanel.SetActive(false);
     }
 }

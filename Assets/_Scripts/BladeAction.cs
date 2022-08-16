@@ -21,12 +21,15 @@ public class BladeAction : StaticInstance<BladeAction>
             case BladeState.Standing:
                 break;
             case BladeState.BladeOff:
+                bladeAnimation.SetBool("full", false);
                 bladeAnimation.SetBool("bladeOpen", false);
                 break;
             case BladeState.BladeOpen:
+                bladeAnimation.SetBool("full", false);
                 bladeAnimation.SetBool("bladeOpen", true);
                 break;
             case BladeState.Full:
+                bladeAnimation.SetBool("full", true);
                 bladeAnimation.SetBool("bladeOpen", false);
                 break;
             default:
@@ -55,12 +58,12 @@ public class BladeAction : StaticInstance<BladeAction>
     }
     private void OnTriggerStay(Collider other)
     {
-        if(other.tag=="Tree"&&PlayerState.Instance.State!=BladeState.Full)
+        if(other.tag=="Tree" && PlayerState.Instance.State != BladeState.BladeOpen)
             PlayerState.Instance.ChangeState(BladeState.BladeOpen);
     }
     private void OnTriggerExit(Collider other)
     {
-        if(PlayerState.Instance.State == BladeState.BladeOpen)
+        if(other.tag == "Tree" && PlayerState.Instance.State == BladeState.BladeOpen)
             PlayerState.Instance.ChangeState(BladeState.BladeOff);
     }
 }

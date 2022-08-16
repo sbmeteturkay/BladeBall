@@ -56,6 +56,7 @@ public class GameSharedUI : MonoBehaviour
 	}
 	void UpdateWoodFillAmount()
     {
-		woodSlider.fillAmount = GameDataManager.GetWood()/PlayerUnit.Instance.chopper.capacity;
-    }
+		woodSlider.fillAmount = GameDataManager.WoodFillAmount();
+		PlayerUnit.Instance.UpdateCapacityAnimation();
+	}
 }
