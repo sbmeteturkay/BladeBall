@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10ca030c9b620a143b53e4fc0af2cd9d, type: 3}
   m_Name: Chopper
   m_EditorClassIdentifier: 
-  blade: {fileID: 11400000, guid: 13f0b1c7c16bc004ea293d6bc7a40ce5, type: 2}
+  blade: {fileID: 11400000, guid: 20364e6fd680b304aba3931c7110af00, type: 2}
   movementSpeed: 1
   scale: 1
   energy: 1

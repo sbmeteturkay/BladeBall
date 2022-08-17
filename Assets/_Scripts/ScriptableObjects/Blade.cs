@@ -19,9 +19,9 @@ public class Blade : ScriptableObject
     public enum Blades
     {
         grey,
-        fire,
+        hammer,
+        trumpet,
         saw,
-        flamer,
-        hammer
+        fire,
     }
 }

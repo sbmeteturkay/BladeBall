@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e356a621b030e1498fac8571a44b0e5, type: 3}
   m_Name: Hammer
   m_EditorClassIdentifier: 
-  damage: 20
-  speed: 10
-  bladeModelIndex: 4
+  damage: 3
+  speed: 3
+  bladeModelIndex: 1
   image: {fileID: 21300000, guid: b6adf1cf14f6d464194562461987edf1, type: 3}
-  price: 500
-  isPurchased: 0
+  price: 25
+  isPurchased: 1

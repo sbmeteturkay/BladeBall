@@ -17,4 +17,4 @@ MonoBehaviour:
   bladeModelIndex: 0
   image: {fileID: 21300000, guid: 2917ca411b9e94173a81b626cde3ec17, type: 3}
   price: 0
-  isPurchased: 1
+  isPurchased: 0

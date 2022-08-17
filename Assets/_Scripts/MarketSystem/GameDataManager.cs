@@ -35,8 +35,12 @@ public static class GameDataManager
 
 	static GameDataManager()
 	{
-		if(Application.isEditor)
-			//BinarySerializer.DeleteDataFile("player-data.txt");
+        if (Application.isEditor)
+        {
+			BinarySerializer.DeleteDataFile("characters-shop-data.txt");
+			BinarySerializer.DeleteDataFile("player-data.txt");
+		}
+			
 		LoadPlayerData();
 		LoadCharactersShopData();
 	}

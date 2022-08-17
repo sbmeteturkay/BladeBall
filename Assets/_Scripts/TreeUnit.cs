@@ -54,7 +54,7 @@ public class TreeUnit : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == "Blade") { 
+        if (other.gameObject.layer == 7) { 
             BladeAction.Instance.DoDamage(copiedTree);
             CheckState();
         }
