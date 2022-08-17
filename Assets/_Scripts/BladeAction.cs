@@ -11,6 +11,12 @@ public class BladeAction : StaticInstance<BladeAction>
     {
         blade = PlayerUnit.Instance.chopper.blade;
         PlayerState.OnEventChange += PlayerState_OnEventChange;
+        Chopper.OnBladeChange += Chopper_OnBladeChange;
+    }
+
+    private void Chopper_OnBladeChange(Blade obj)
+    {
+        blade = obj;
     }
 
     private void PlayerState_OnEventChange(BladeState obj)
@@ -68,12 +74,6 @@ public class BladeAction : StaticInstance<BladeAction>
     }
 }
 
-public enum Blades
-{
-    grey,
-    fire,
-    old
-}
 enum Storage
 {
     skull,

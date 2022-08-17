@@ -21,6 +21,7 @@ public class CharacterItemUI : MonoBehaviour
 	[SerializeField] Button itemButton;
 	[SerializeField] Image itemImage;
 	[SerializeField] Outline itemOutline;
+	[SerializeField] GameObject selected;
 
 	//--------------------------------------------------------------
 	public void SetItemPosition(Vector2 pos)
@@ -40,12 +41,12 @@ public class CharacterItemUI : MonoBehaviour
 
 	public void SetCharacterSpeed(float speed)
 	{
-		characterSpeedFill.fillAmount = speed / 100;
+		characterSpeedFill.fillAmount = speed / 20;
 	}
 
 	public void SetCharacterPower(float power)
 	{
-		characterPowerFill.fillAmount = power / 100;
+		characterPowerFill.fillAmount = power / 20;
 	}
 
 	public void SetCharacterPrice(int price)
@@ -58,7 +59,7 @@ public class CharacterItemUI : MonoBehaviour
 		characterPurchaseButton.gameObject.SetActive(false);
 		itemButton.interactable = true;
 
-		itemImage.color = itemNotSelectedColor;
+		//itemImage.color = itemNotSelectedColor;
 	}
 
 	public void OnItemPurchase(int itemIndex, UnityAction<int> action)
@@ -77,16 +78,20 @@ public class CharacterItemUI : MonoBehaviour
 
 	public void SelectItem()
 	{
+		//itemOutline.effectColor = new Color(255, 255, 255, 255);
+		//itemImage.color = itemSelectedColor;
 		itemOutline.enabled = true;
-		itemImage.color = itemSelectedColor;
 		itemButton.interactable = false;
+		selected.SetActive(true);
 	}
 
 	public void DeselectItem()
 	{
 		itemOutline.enabled = false;
-		itemImage.color = itemNotSelectedColor;
+		//itemOutline.effectColor = new Color(255, 255, 255, 100);
+		//itemImage.color = itemNotSelectedColor;
 		itemButton.interactable = true;
+		selected.SetActive(false);
 	}
 
 	public void AnimateShakeItem()

@@ -14,4 +14,9 @@ public class PlayerUnit : StaticInstance<PlayerUnit>
     {
         playerAnimation.SetLayerWeight(1, GameDataManager.WoodFillAmount());
     }
+    public void SetChopperBlade(Blade blade)
+    {
+        chopper.blade = blade;
+        chopper.SetBlade(blade);
+    }
 }

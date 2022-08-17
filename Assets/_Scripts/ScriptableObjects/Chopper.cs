@@ -1,16 +1,17 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "New Chopper", menuName = "Chopper/Chopper")]
 public class Chopper : ScriptableObject
 {
+    public static event Action<Blade> OnBladeChange;
     public Blade blade;
     public float movementSpeed=1;
     public float scale=1;
     public float energy = 1;
     public float currentEnergy = 1;
     public int capacity = 10;
-    public void SetMovementSpeed(int value)
+    public void SetMovementSpeed(float value)
     {
         movementSpeed = value;
     }
@@ -23,8 +24,9 @@ public class Chopper : ScriptableObject
     {
         currentEnergy = value;
     }
-    public void SetBlade(Blade blade)
+    public void SetBlade(Blade _blade)
     {
-        this.blade = blade;
+        blade = _blade;
+        OnBladeChange?.Invoke(blade);
     }
 }

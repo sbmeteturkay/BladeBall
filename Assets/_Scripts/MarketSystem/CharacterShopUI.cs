@@ -5,6 +5,8 @@ using DG.Tweening;
 
 public class CharacterShopUI : MonoBehaviour
 {
+	Chopper chopper;
+
 	[Header("Layout Settings")]
 	[SerializeField] float itemSpacing = .5f;
 	float itemHeight;
@@ -144,6 +146,8 @@ public class CharacterShopUI : MonoBehaviour
 	void ChangePlayerSkin()
 	{
 		Blade character = GameDataManager.GetSelectedCharacter();
+		PlayerUnit.Instance.SetChopperBlade(character);
+		Debug.Log("Player blade changed" + character.name);
 		if (character.image != null)
 		{
 			//Change Main menu's info (image & text)

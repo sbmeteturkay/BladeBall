@@ -8,7 +8,7 @@ public class PlayerState : StaticInstance<PlayerState>
     public static event Action<BladeState> OnEventChange;
     public BladeState State { get; private set; }
 
-    void Start() => ChangeState(BladeState.Standing);
+    void Start() => ChangeState(BladeState.BladeOpen);
     public void ChangeState(BladeState bladeState)
     {
         State = bladeState;
@@ -34,7 +34,7 @@ public class PlayerState : StaticInstance<PlayerState>
                 break;
         }
         OnEventChange?.Invoke(bladeState);
-        Debug.Log(State);
+        //Debug.Log(State);
     }
 
 }

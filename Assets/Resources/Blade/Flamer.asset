@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e356a621b030e1498fac8571a44b0e5, type: 3}
   m_Name: Flamer
   m_EditorClassIdentifier: 
-  damage: 3
-  speed: 1
-  bladeModelIndex: 1
+  damage: 20
+  speed: 20
+  bladeModelIndex: 3
   image: {fileID: 21300000, guid: 617e2e0b79f344d72bad753b86e47106, type: 3}
-  price: 200
+  price: 1000
   isPurchased: 0
