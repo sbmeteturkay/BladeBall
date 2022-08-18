@@ -7,6 +7,7 @@ public class PlayerUnit : StaticInstance<PlayerUnit>
     public Chopper chopper;
     [SerializeField] Animator playerAnimation;
     [SerializeField] GameObject BladeParent;
+    [SerializeField] PlayerMovement movement;
     public int CheckCapacity()
     {
         return chopper.capacity - GameDataManager.GetWood();

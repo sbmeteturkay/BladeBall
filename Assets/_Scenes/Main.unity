@@ -3505,6 +3505,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5247993172125717764, guid: 5e4277ae0ca139a40a500e5d2ba7ef91, type: 3}
   m_PrefabInstance: {fileID: 131286186}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &132771330
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 132771331}
+  m_Layer: 0
+  m_Name: UpgradeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &132771331
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132771330}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1952840055}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &137471316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26325,7 +26355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 767724029214495809, guid: 373557a335fccb14f92edcb6d4c562ab, type: 3}
       propertyPath: m_Name
-      value: UpgradeUnit_1
+      value: Scale
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 373557a335fccb14f92edcb6d4c562ab, type: 3}
@@ -27685,7 +27715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 767724029214495809, guid: 373557a335fccb14f92edcb6d4c562ab, type: 3}
       propertyPath: m_Name
-      value: UpgradeUnit_2
+      value: Energy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 373557a335fccb14f92edcb6d4c562ab, type: 3}
@@ -32766,6 +32796,49 @@ Transform:
   m_Father: {fileID: 275197271}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1309565767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1309565768}
+  - component: {fileID: 1309565769}
+  m_Layer: 0
+  m_Name: UpgradePanel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1309565768
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309565767}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1618710205}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1309565769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1309565767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fdf22da81e6e1e4395743f64dc3e06b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1310101340
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -38338,6 +38411,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1055781765}
+  - {fileID: 1309565768}
   m_Father: {fileID: 1952840055}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -45669,6 +45743,7 @@ Transform:
   - {fileID: 2135861265}
   - {fileID: 1618710205}
   - {fileID: 1735827517}
+  - {fileID: 132771331}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -48341,6 +48416,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 150182068}
     m_Modifications:
+    - target: {fileID: 1303612169689217824, guid: a7d886f3fb61079408fd94bbbcb5354d, type: 3}
+      propertyPath: m_Name
+      value: MovementSpeed
+      objectReference: {fileID: 0}
     - target: {fileID: 1303612169689217825, guid: a7d886f3fb61079408fd94bbbcb5354d, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 125
