@@ -16,7 +16,7 @@ public class UpgradeMenuItem : MonoBehaviour
 	[SerializeField] Button characterPurchaseButton;
 
 	[Space(20f)]
-	[SerializeField] Button itemButton;
+	//[SerializeField] Button itemButton;
 	[SerializeField] Image itemImage;
 	[SerializeField] GameObject selected;
 
@@ -26,6 +26,10 @@ public class UpgradeMenuItem : MonoBehaviour
 		GetComponent<RectTransform>().anchoredPosition += pos;
 	}
 
+	public void SetImage(Sprite img)
+    {
+		itemImage.sprite=img;
+    }
 	public void SetCharacterName(string name)
 	{
 		characterNameText.text = name;
@@ -42,7 +46,7 @@ public class UpgradeMenuItem : MonoBehaviour
 	public void SetCharacterAsMaxLevel()
 	{
 		characterPurchaseButton.gameObject.SetActive(false);
-		itemButton.interactable = false;
+		//itemButton.interactable = false;
 		characterPriceText.text = "MAXED";
 		//itemImage.color = itemNotSelectedColor;
 	}
@@ -59,10 +63,10 @@ public class UpgradeMenuItem : MonoBehaviour
 
 	public void OnItemSelect(int itemIndex, UnityAction<int> action)
 	{
-		itemButton.interactable = true;
+		//itemButton.interactable = true;
 
-		itemButton.onClick.RemoveAllListeners();
-		itemButton.onClick.AddListener(() => action.Invoke(itemIndex));
+		//itemButton.onClick.RemoveAllListeners();
+		//itemButton.onClick.AddListener(() => action.Invoke(itemIndex));
 	}
 
 	public void SelectItem()

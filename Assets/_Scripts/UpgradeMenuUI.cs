@@ -5,7 +5,6 @@ using UnityEngine;
 public class UpgradeMenuUI : MonoBehaviour
 {
 	[Header("UI elements")]
-	[SerializeField] Transform ShopMenu;
 	[SerializeField] GameObject itemPrefab;
 	[Header("Layout Settings")]
 	[SerializeField] float itemSpacing = .5f;
@@ -34,7 +33,7 @@ public class UpgradeMenuUI : MonoBehaviour
 			UpgradeMenuItem uiItem = Instantiate(itemPrefab, UpgradeItemsContainer).GetComponent<UpgradeMenuItem>();
 			upgradeMenuItems.Add(uiItem);
 			//Move item to its position
-			uiItem.SetItemPosition(Vector2.down * i * (itemHeight + itemSpacing));
+			uiItem.SetItemPosition(Vector2.right * i * (itemHeight + itemSpacing));
 
 			//Set Item name in Hierarchy (Not required)
 			uiItem.gameObject.name = "Item" + i + "-" + upgradeMaterials[i].name;
@@ -55,8 +54,8 @@ public class UpgradeMenuUI : MonoBehaviour
 			}
 
 			//Resize Items Container
-			UpgradeItemsContainer.GetComponent<RectTransform>().sizeDelta =
-				Vector2.up * ((itemHeight + itemSpacing) * upgradeMaterials.Length + itemSpacing);
+			/*UpgradeItemsContainer.GetComponent<RectTransform>().sizeDelta =
+				Vector2.zero * ((itemHeight + itemSpacing) * upgradeMaterials.Length + itemSpacing);*/
 
 			//you can use VerticalLayoutGroup with ContentSizeFitter to skip all of this :
 			//(moving items & resizing the container)
@@ -65,19 +64,20 @@ public class UpgradeMenuUI : MonoBehaviour
 	}
 	void UpdateUIValues(int i)
     {
-		upgradeMenuItems[i].SetCharacterName(upgradeMaterials[i].name);
+		upgradeMenuItems[i].SetCharacterName(upgradeMaterials[i].upgradeName);
 		upgradeMenuItems[i].SetCharacterPrice(upgradeMaterials[i].price);
 		upgradeMenuItems[i].SetCharacterLevel(upgradeMaterials[i].level);
+		upgradeMenuItems[i].SetImage(upgradeMaterials[i].referenceImage);
 	}
 	void UpdateMaterial(int index)
     {
         if (upgradeMaterials[index].UpdateAction())
         {
-			SoundManager.Instance.Play(SoundManager.Sounds.gem);
+			SoundManager.Instance.Play(SoundManager.Sounds.upgrade);
 			UpdateUIValues(index);
         }
         else {
-			SoundManager.Instance.Play(SoundManager.Sounds.die);
+			SoundManager.Instance.Play(SoundManager.Sounds.notEnoughMoney);
 			upgradeMenuItems[index].AnimateShakeItem();
 		}
 		

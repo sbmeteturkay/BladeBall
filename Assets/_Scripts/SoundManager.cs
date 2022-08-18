@@ -17,15 +17,14 @@ public class SoundManager : MonoBehaviour
 	public static SoundManager Instance = null;
 	// Initialize the singleton instance.
 
-	[Tooltip("0-hadnle,1-die,2-win,3-firework,4-gem")]
+	[Tooltip("collectCoin,upgrade,buy,notEnoughMoney")]
 	public AudioClip[] audioClips;
 	public enum Sounds
 	{
-		handle,
-		die,
-		win,
-		firework,
-		gem
+		collectCoin,
+		upgrade,
+		buy,
+		notEnoughMoney
 	}
 	private void Awake()
 	{

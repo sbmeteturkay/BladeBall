@@ -1,10 +1,14 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 [CreateAssetMenu(fileName = "UpgradeMaterial", menuName = "Shopping/Upgrade")]
 public class UpgradeMaterial:ScriptableObject
 {
-    public event Action<UpgradeMaterial> OnValueChange;
+    [Header("Constant Data")]
+    public int startPrice = 1;
+    public float startValue = 1;    public event Action<UpgradeMaterial> OnValueChange;
+    [Space(20)]
     public string upgradeName;
     [Header("Level")]
     public int level = 1;
@@ -12,12 +16,13 @@ public class UpgradeMaterial:ScriptableObject
     public bool infinite = false;
     [Header("In Game Price")]
     public int price = 1;
-    public float priceIncreaseRate;
+    public float priceIncreaseRate=1;
     public CollectType moneyType=CollectType.wood;
     [Header("Increaser of system")]
     public float value = 1;
     public float valueIncreaseRate = 1;
-
+    [Space(20)]
+    public Sprite referenceImage;
     #region Value
     public void SetValue(int _value)
     {
@@ -59,6 +64,10 @@ public class UpgradeMaterial:ScriptableObject
     }
     #endregion
 
+    public void SetImage(Sprite _image)
+    {
+        referenceImage = _image;
+    }
     public bool UpdateAction()
     {
         if (GameDataManager.CanSpendCoins(price, moneyType) && CanUpdateLevel())
