@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01c9dae7ae1e3f54fab8e1c371b42c05, type: 3}
   m_Name: MovementSpeed
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeMaterial
-  startPrice: 1
-  startValue: 1
+  startPrice: 5
+  startValue: 2.5
   upgradeName: SPEED
   level: 1
   maxLevel: 20
   infinite: 0
-  price: 1
+  price: 5
   priceIncreaseRate: 1
-  moneyType: 0
-  value: 1
+  moneyType: 1
+  value: 2.5
   valueIncreaseRate: 1
   referenceImage: {fileID: 21300000, guid: 1df593e87d86d8f439db0c3d0e752652, type: 3}

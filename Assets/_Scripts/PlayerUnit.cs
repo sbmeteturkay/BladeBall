@@ -7,7 +7,6 @@ public class PlayerUnit : StaticInstance<PlayerUnit>
     public Chopper chopper;
     [SerializeField] Animator playerAnimation;
     [SerializeField] GameObject BladeParent;
-    [SerializeField] PlayerMovement movement;
     public int CheckCapacity()
     {
         return chopper.capacity - GameDataManager.GetWood();
@@ -27,5 +26,9 @@ public class PlayerUnit : StaticInstance<PlayerUnit>
         Debug.Log((int)chopper.blade.bladeModelIndex);
         BladeParent.transform.GetChild((int)chopper.blade.bladeModelIndex).gameObject.SetActive(false);
         BladeParent.transform.GetChild(i).gameObject.SetActive(true);
+    }
+    private void Start()
+    {
+        chopper.Start();
     }
 }

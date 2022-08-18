@@ -20,7 +20,7 @@ MonoBehaviour:
   infinite: 0
   price: 1
   priceIncreaseRate: 1
-  moneyType: 0
+  moneyType: 1
   value: 1
   valueIncreaseRate: 1
   referenceImage: {fileID: 21300000, guid: b967bde5b97b7ff4b89f946a9e05f7bc, type: 3}

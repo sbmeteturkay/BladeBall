@@ -218,6 +218,7 @@ public class CharacterShopUI : MonoBehaviour
 		else
 		{
 			//No enough coins..
+			SoundManager.Instance.Play(SoundManager.Sounds.notEnoughMoney);
 			AnimateNoMoreCoinsText();
 			uiItem.AnimateShakeItem();
 		}

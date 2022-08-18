@@ -7,7 +7,8 @@ public class UpgradeMaterial:ScriptableObject
 {
     [Header("Constant Data")]
     public int startPrice = 1;
-    public float startValue = 1;    public event Action<UpgradeMaterial> OnValueChange;
+    public float startValue = 1;
+    public event Action<UpgradeMaterial> OnValueChange;
     [Space(20)]
     public string upgradeName;
     [Header("Level")]
@@ -16,9 +17,9 @@ public class UpgradeMaterial:ScriptableObject
     public bool infinite = false;
     [Header("In Game Price")]
     public int price = 1;
-    public float priceIncreaseRate=1;
+    public int priceIncreaseRate=1;
     public CollectType moneyType=CollectType.wood;
-    [Header("Increaser of system")]
+    [Header("Increase value system")]
     public float value = 1;
     public float valueIncreaseRate = 1;
     [Space(20)]
@@ -30,7 +31,7 @@ public class UpgradeMaterial:ScriptableObject
     }
     public void UpgradeValue()
     {
-        value = valueIncreaseRate * value;
+        value = value + valueIncreaseRate * level;
     }
     public void LimitedValueMultipler(MonoBehaviour mono,float multipler,float seconds)
     {
@@ -56,7 +57,7 @@ public class UpgradeMaterial:ScriptableObject
     #region Price
     public void UpdatePrice()
     {
-        price = price * price;
+        price = price +priceIncreaseRate*level;
     }
     public float GetPrice()
     {
