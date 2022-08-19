@@ -86,7 +86,7 @@ public static class GameDataManager
 					else if (PlayerUnit.Instance.CheckCapacity() - amount < 0) { 
 						playerData.woods += PlayerUnit.Instance.CheckCapacity();
 					}
-					//SoundManager.Instance.Play()
+				SoundManager.Instance.Play(SoundManager.Sounds.collectCoin, true, false);
 				break;
             case CollectType.coin:
 				playerData.coins += amount;

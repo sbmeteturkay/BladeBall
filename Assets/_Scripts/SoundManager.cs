@@ -8,11 +8,13 @@ public class SoundManager : MonoBehaviour
 	//Improved with enum call by: sbmeteturkay
 
 	// Audio players components.
-	public AudioSource EffectsSource;
-	public AudioSource MusicSource;
+	[SerializeField] AudioSource EffectsSource;
+	[SerializeField] AudioSource[] EffectsSourceList;
+	[SerializeField] AudioSource UIEffectsSource;
+	[SerializeField] AudioSource MusicSource;
 	// Random pitch adjustment range.
-	public float LowPitchRange = .95f;
-	public float HighPitchRange = 1.05f;
+	[SerializeField] float LowPitchRange = .95f;
+	[SerializeField] float HighPitchRange = 1.05f;
 	// Singleton instance.
 	public static SoundManager Instance = null;
 	// Initialize the singleton instance.
@@ -24,7 +26,11 @@ public class SoundManager : MonoBehaviour
 		collectCoin,
 		upgrade,
 		buy,
-		notEnoughMoney
+		notEnoughMoney,
+		selected,
+		leafFall,
+		treeFall,
+		treeDestroy
 	}
 	private void Awake()
 	{
@@ -44,8 +50,8 @@ public class SoundManager : MonoBehaviour
 	// Play a single clip through the sound effects source.
 	public void Play(AudioClip clip)
 	{
-		EffectsSource.clip = clip;
-		EffectsSource.Play();
+		CheckAvailableSource().clip = clip;
+		CheckAvailableSource().Play();
 	}
 
 	// Play a single clip through the music source.
@@ -54,23 +60,69 @@ public class SoundManager : MonoBehaviour
 		MusicSource.clip = clip;
 		MusicSource.Play();
 	}
-	public void Play(Sounds sound, bool pitchRandom = false)
+	public void Play(Sounds sound,bool ui ,bool pitchRandom = false)
 	{
-		EffectsSource.clip = audioClips[(int)sound];
-		if (pitchRandom)
+		if (ui)
 		{
-			float randomPitch = Random.Range(LowPitchRange, HighPitchRange);
-			EffectsSource.pitch = randomPitch;
+			if(UIEffectsSource.clip == audioClips[(int)sound]&&UIEffectsSource.isPlaying)
+            {
+				UIEffectsSource.pitch += 0.05f;
+            }
+            else
+            {
+				UIEffectsSource.pitch = 1;
+				UIEffectsSource.clip = audioClips[(int)sound];
+				UIEffectsSource.Play();
+			}
+
 		}
-		EffectsSource.Play();
+		else
+		{
+			CheckAvailableSource().clip = audioClips[(int)sound];
+			if (pitchRandom)
+			{
+				float randomPitch = Random.Range(LowPitchRange, HighPitchRange);
+				CheckAvailableSource().pitch = randomPitch;
+			}
+			CheckAvailableSource().Play();
+		}
+	}
+	public void Play(AudioClip sound, bool ui, bool pitchRandom = false)
+	{
+        if (ui)
+        {
+			UIEffectsSource.clip = sound;
+			UIEffectsSource.Play();
+        }
+        else
+        {
+			CheckAvailableSource().clip = sound;
+			if (pitchRandom)
+			{
+				float randomPitch = Random.Range(LowPitchRange, HighPitchRange);
+				CheckAvailableSource().pitch = randomPitch;
+			}
+			CheckAvailableSource().Play();
+		}
+
 	}
 	// Play a random clip from an array, and randomize the pitch slightly.
 	public void RandomSoundEffect(params AudioClip[] clips)
 	{
 		int randomIndex = Random.Range(0, clips.Length);
 		float randomPitch = Random.Range(LowPitchRange, HighPitchRange);
-		EffectsSource.pitch = randomPitch;
-		EffectsSource.clip = clips[randomIndex];
-		EffectsSource.Play();
+		CheckAvailableSource().pitch = randomPitch;
+		CheckAvailableSource().clip = clips[randomIndex];
+		CheckAvailableSource().Play();
 	}
+	AudioSource CheckAvailableSource()
+    {
+		foreach(AudioSource audio in EffectsSourceList)
+        {
+			if (!audio.isPlaying)
+				return audio;
+        }
+		Debug.Log("not have any source");
+		return EffectsSource;
+    }
 }

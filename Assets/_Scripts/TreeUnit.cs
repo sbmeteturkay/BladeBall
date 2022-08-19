@@ -34,20 +34,24 @@ public class TreeUnit : MonoBehaviour
                 break;
             case TreeState.leafless:
                 OpenChildRigidbodys(TopLeafs);
+                //SoundManager.Instance.Play(SoundManager.Sounds.leafFall,false);
                 break;
             case TreeState.chopped:
+                Debug.Log("EventState inside");
                 OpenChildRigidbodys(BotLeafs);
                 fullTree.enabled = false;
                 wood.enabled = true;
+                //SoundManager.Instance.Play(SoundManager.Sounds.treeFall,false);
                 break;
             case TreeState.destroyed:
                 OpenChildRigidbodys(Wood);
                 wood.enabled = false;
                 GameDataManager.AddCoins(copiedTree.givenGold, CollectType.wood);
+                SoundManager.Instance.Play(SoundManager.Sounds.treeDestroy,false);
                 Helpers.Wait(this, 2f, () => { StaticTree.transform.parent.gameObject.SetActive(false); });
                 break;
             default:
-                Debug.Log("EventState inside");
+                
                 break;
         }
     }
@@ -61,17 +65,20 @@ public class TreeUnit : MonoBehaviour
     }
     void CheckState()
     {
-        if (copiedTree.currentHealth <= tree.health / 3 * 2)
+        if (copiedTree.treeState==TreeState.full && copiedTree.currentHealth <= tree.health / 3 * 2)
         {
-            copiedTree.SetState(TreeState.leafless);
+            if(copiedTree.treeState!= TreeState.leafless)
+                copiedTree.SetState(TreeState.leafless);
         }
-        if (copiedTree.currentHealth <= tree.health / 3 * 1)
+        if (copiedTree.treeState == TreeState.leafless && copiedTree.currentHealth <= tree.health / 3 * 1)
         {
-            copiedTree.SetState(TreeState.chopped);
+            if (copiedTree.treeState != TreeState.chopped)
+                copiedTree.SetState(TreeState.chopped);
         }
-        if (copiedTree.currentHealth <= 0)
+        if (copiedTree.treeState == TreeState.chopped && copiedTree.currentHealth <= 0)
         {
-            copiedTree.SetState(TreeState.destroyed);
+            if (copiedTree.treeState != TreeState.destroyed)
+                copiedTree.SetState(TreeState.destroyed);
         }
     }
     void OpenChildRigidbodys(Transform parent)

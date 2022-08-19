@@ -15,7 +15,7 @@ MonoBehaviour:
   startPrice: 1
   startValue: 1
   upgradeName: SCALE
-  level: 5
+  level: 1
   maxLevel: 20
   infinite: 0
   price: 1

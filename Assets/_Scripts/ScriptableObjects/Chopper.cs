@@ -32,6 +32,7 @@ public class Chopper : ScriptableObject
     }
     public void SetBlade(Blade _blade)
     {
+        Debug.Log("blade change");
         blade = _blade;
         OnBladeChange?.Invoke(blade);
     }

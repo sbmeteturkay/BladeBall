@@ -68,16 +68,22 @@ public class UpgradeMenuUI : MonoBehaviour
 		upgradeMenuItems[i].SetCharacterPrice(upgradeMaterials[i].price);
 		upgradeMenuItems[i].SetCharacterLevel(upgradeMaterials[i].level);
 		upgradeMenuItems[i].SetImage(upgradeMaterials[i].referenceImage);
+		if (!upgradeMaterials[i].CanUpdateLevel())
+		{
+			//Character is Purchased
+			upgradeMenuItems[i].SetCharacterAsMaxLevel();
+			//uiItem.OnItemSelect(i, OnItemSelected);
+		}
 	}
 	void UpdateMaterial(int index)
     {
         if (upgradeMaterials[index].UpdateAction())
         {
-			SoundManager.Instance.Play(SoundManager.Sounds.upgrade);
+			SoundManager.Instance.Play(SoundManager.Sounds.upgrade,true);
 			UpdateUIValues(index);
         }
         else {
-			SoundManager.Instance.Play(SoundManager.Sounds.notEnoughMoney);
+			SoundManager.Instance.Play(SoundManager.Sounds.notEnoughMoney,true);
 			upgradeMenuItems[index].AnimateShakeItem();
 		}
 		

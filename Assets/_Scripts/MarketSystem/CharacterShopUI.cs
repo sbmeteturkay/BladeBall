@@ -5,8 +5,6 @@ using DG.Tweening;
 
 public class CharacterShopUI : MonoBehaviour
 {
-	Chopper chopper;
-
 	[Header("Layout Settings")]
 	[SerializeField] float itemSpacing = .5f;
 	float itemHeight;
@@ -169,6 +167,7 @@ public class CharacterShopUI : MonoBehaviour
 
 		//Change Player Skin
 		ChangePlayerSkin();
+		SoundManager.Instance.Play(SoundManager.Sounds.selected,true);
 	}
 
 	void SelectItemUI(int itemIndex)
@@ -213,12 +212,14 @@ public class CharacterShopUI : MonoBehaviour
 
 			//Add purchased item to Shop Data
 			GameDataManager.AddPurchasedCharacter(index);
+			SoundManager.Instance.Play(SoundManager.Sounds.buy,true);
+			OnItemSelected(index);
 
 		}
 		else
 		{
 			//No enough coins..
-			SoundManager.Instance.Play(SoundManager.Sounds.notEnoughMoney);
+			SoundManager.Instance.Play(SoundManager.Sounds.notEnoughMoney,true);
 			AnimateNoMoreCoinsText();
 			uiItem.AnimateShakeItem();
 		}

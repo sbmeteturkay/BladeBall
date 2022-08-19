@@ -18,7 +18,7 @@ MonoBehaviour:
   level: 1
   maxLevel: 20
   infinite: 0
-  price: 5
+  price: 1
   priceIncreaseRate: 1
   moneyType: 1
   value: 5

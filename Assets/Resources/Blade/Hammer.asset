@@ -15,6 +15,7 @@ MonoBehaviour:
   damage: 3
   speed: 3
   bladeModelIndex: 1
+  hitSound: {fileID: 8300000, guid: c869fc16d057b3d41a5e31d5e4aa780d, type: 3}
   image: {fileID: 21300000, guid: b6adf1cf14f6d464194562461987edf1, type: 3}
   price: 25
   isPurchased: 0

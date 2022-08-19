@@ -45,7 +45,7 @@ public class UpgradeMenuItem : MonoBehaviour
 
 	public void SetCharacterAsMaxLevel()
 	{
-		characterPurchaseButton.gameObject.SetActive(false);
+		characterPurchaseButton.interactable = false;
 		//itemButton.interactable = false;
 		characterPriceText.text = "MAXED";
 		//itemImage.color = itemNotSelectedColor;
