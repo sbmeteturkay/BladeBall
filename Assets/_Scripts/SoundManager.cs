@@ -11,6 +11,7 @@ public class SoundManager : MonoBehaviour
 	[SerializeField] AudioSource EffectsSource;
 	[SerializeField] AudioSource[] EffectsSourceList;
 	[SerializeField] AudioSource UIEffectsSource;
+	[SerializeField] AudioSource[] UIEffectsSourceList;
 	[SerializeField] AudioSource MusicSource;
 	// Random pitch adjustment range.
 	[SerializeField] float LowPitchRange = .95f;
@@ -30,7 +31,8 @@ public class SoundManager : MonoBehaviour
 		selected,
 		leafFall,
 		treeFall,
-		treeDestroy
+		treeDestroy,
+		tradeCoin
 	}
 	private void Awake()
 	{
@@ -64,16 +66,18 @@ public class SoundManager : MonoBehaviour
 	{
 		if (ui)
 		{
-			if(UIEffectsSource.clip == audioClips[(int)sound]&&UIEffectsSource.isPlaying)
+			CheckUIAvailableSource().pitch = 1;
+			if (CheckUIAvailableSource().clip != audioClips[(int)sound])
             {
-				UIEffectsSource.pitch += 0.05f;
+				CheckUIAvailableSource().clip = audioClips[(int)sound];
+				CheckUIAvailableSource().Play();
             }
             else
             {
-				UIEffectsSource.pitch = 1;
-				UIEffectsSource.clip = audioClips[(int)sound];
-				UIEffectsSource.Play();
+				CheckUIAvailableSource().PlayDelayed(0.1f);
 			}
+				
+			
 
 		}
 		else
@@ -89,13 +93,15 @@ public class SoundManager : MonoBehaviour
 	}
 	public void Play(AudioClip sound, bool ui, bool pitchRandom = false)
 	{
-        if (ui)
-        {
-			UIEffectsSource.clip = sound;
-			UIEffectsSource.Play();
-        }
-        else
-        {
+		if (ui)
+		{
+			CheckUIAvailableSource().pitch = 1;
+			if (CheckUIAvailableSource().clip != sound)
+				CheckUIAvailableSource().clip = sound;
+			CheckUIAvailableSource().Play();
+		}
+		else
+		{
 			CheckAvailableSource().clip = sound;
 			if (pitchRandom)
 			{
@@ -125,4 +131,14 @@ public class SoundManager : MonoBehaviour
 		Debug.Log("not have any source");
 		return EffectsSource;
     }
+	AudioSource CheckUIAvailableSource()
+	{
+		foreach (AudioSource audio in UIEffectsSourceList)
+		{
+			if (!audio.isPlaying)
+				return audio;
+		}
+		Debug.Log("not have any source");
+		return UIEffectsSource;
+	}
 }
