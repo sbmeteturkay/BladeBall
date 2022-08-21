@@ -8,21 +8,20 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Joystick joystick;
     [SerializeField] Transform playerSprite;
     [SerializeField] Animator animator;
-    UpgradeMaterial speed;
     bool Movement;
     public float movementSpeed = 6;
     // Start is called before the first frame update
     void Start()
     {
-        speed = PlayerUnit.Instance.chopper.speedData;
         playerSprite.gameObject.SetActive(false);
-        speed.OnValueChange += Speed_OnValueChange;
-        movementSpeed = speed.value;
+        PlayerUnit.Instance.chopper.OnValueChange += Speed_OnValueChange;
+        movementSpeed = PlayerUnit.Instance.chopper.speedData.value;
     }
 
-    private void Speed_OnValueChange(UpgradeMaterial obj)
+    private void Speed_OnValueChange(Chopper obj)
     {
-        SetSpeed(obj.value);
+        SetSpeed(obj.movementSpeed);
+        Debug.LogWarning("speed change");
     }
 
     // Update is called once per frame

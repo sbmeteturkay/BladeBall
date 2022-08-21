@@ -4,7 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Chopper", menuName = "Chopper/Chopper")]
 public class Chopper : ScriptableObject
 {
-    public static event Action<Blade> OnBladeChange;
+    public event Action<Blade> OnBladeChange;
+    public event Action<Chopper> OnValueChange;
     public Blade blade;
     public float movementSpeed=1;
     public float scale=1;
@@ -22,7 +23,7 @@ public class Chopper : ScriptableObject
     }
     public void SetScale(float value)
     {
-        scale = value;
+        scale = value/50;
         capacity =(int)scale* 10;
     }
     public void SetEnergy(float value)
@@ -36,11 +37,33 @@ public class Chopper : ScriptableObject
         blade = _blade;
         OnBladeChange?.Invoke(blade);
     }
-    public void Start()
+    public void ReloadValues()
     {
         SetMovementSpeed(speedData.value);
         SetEnergy(energyData.value);
         SetScale(scaleData.value);
+        OnValueChange?.Invoke(this);
+    }
+    public void Start()
+    {
+        ReloadValues();
+        scaleData.OnValueChange += ScaleData_OnValueChange;
+        speedData.OnValueChange += SpeedData_OnValueChange;
+        energyData.OnValueChange += EnergyData_OnValueChange;
+    }
 
+    private void EnergyData_OnValueChange(UpgradeMaterial obj)
+    {
+        ReloadValues();
+    }
+
+    private void SpeedData_OnValueChange(UpgradeMaterial obj)
+    {
+        ReloadValues();
+    }
+
+    private void ScaleData_OnValueChange(UpgradeMaterial obj)
+    {
+        ReloadValues();
     }
 }

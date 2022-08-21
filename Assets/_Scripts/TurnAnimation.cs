@@ -9,10 +9,10 @@ public class TurnAnimation : MonoBehaviour
     float turnSpeed = 1;
     //private void Awake() => PlayerState.OnEventChange += PlayerState_OnEventChange;
 
-    private void Awake()
+    private void Start()
     {
         PlayerState.OnEventChange += PlayerState_OnEventChange;
-        Chopper.OnBladeChange += Blade_OnBladeChange;
+        PlayerUnit.Instance.chopper.OnBladeChange += Blade_OnBladeChange;
     }
 
     private void Blade_OnBladeChange(Blade obj)
@@ -37,10 +37,6 @@ public class TurnAnimation : MonoBehaviour
     { 
          PlayerState.OnEventChange -= PlayerState_OnEventChange;
     } 
-    private void Start()
-    {
-        
-    }
     void SetSpeed(float _i)
     {
         speed = _i;

@@ -15,12 +15,12 @@ MonoBehaviour:
   startPrice: 1
   startValue: 5
   upgradeName: SCALE
-  level: 1
+  level: 20
   maxLevel: 20
   infinite: 0
-  price: 1
+  price: 191
   priceIncreaseRate: 1
   moneyType: 1
-  value: 5
+  value: 195
   valueIncreaseRate: 1
   referenceImage: {fileID: 21300000, guid: 8392a9b181e0bb54cad7f70ded221dc1, type: 3}

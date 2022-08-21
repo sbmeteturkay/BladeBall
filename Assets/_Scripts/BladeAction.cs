@@ -11,7 +11,7 @@ public class BladeAction : StaticInstance<BladeAction>
     {
         blade = PlayerUnit.Instance.chopper.blade;
         PlayerState.OnEventChange += PlayerState_OnEventChange;
-        Chopper.OnBladeChange += Chopper_OnBladeChange;
+        PlayerUnit.Instance.chopper.OnBladeChange += Chopper_OnBladeChange;
     }
 
     private void Chopper_OnBladeChange(Blade obj)

@@ -7,6 +7,8 @@ public class PlayerUnit : StaticInstance<PlayerUnit>
     public Chopper chopper;
     [SerializeField] Animator playerAnimation;
     [SerializeField] GameObject BladeParent;
+    [SerializeField] GameObject ScaleObject;
+    Vector3 scale = new Vector3(1, 1, 1);
     public int CheckCapacity()
     {
         return chopper.capacity - GameDataManager.GetWood();
@@ -21,6 +23,11 @@ public class PlayerUnit : StaticInstance<PlayerUnit>
         chopper.SetBlade(blade);
 
     }
+    public void SetScale()
+    {
+        scale.Set(chopper.scale, chopper.scale, chopper.scale);
+        ScaleObject.transform.localScale = scale;
+    }
     public void UpdateBladeModel(int i)
     {
         Debug.Log((int)chopper.blade.bladeModelIndex);
@@ -29,6 +36,13 @@ public class PlayerUnit : StaticInstance<PlayerUnit>
     }
     private void Start()
     {
+        chopper.OnValueChange += Chopper_OnValueChange;
+
         chopper.Start();
+    }
+
+    private void Chopper_OnValueChange(Chopper obj)
+    {
+        SetScale();
     }
 }
