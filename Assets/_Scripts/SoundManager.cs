@@ -128,7 +128,7 @@ public class SoundManager : MonoBehaviour
 			if (!audio.isPlaying)
 				return audio;
         }
-		Debug.Log("not have any source");
+		//Debug.Log("not have any source");
 		return EffectsSource;
     }
 	AudioSource CheckUIAvailableSource()
@@ -138,7 +138,7 @@ public class SoundManager : MonoBehaviour
 			if (!audio.isPlaying)
 				return audio;
 		}
-		Debug.Log("not have any source");
+		//Debug.Log("not have any source");
 		return UIEffectsSource;
 	}
 }
