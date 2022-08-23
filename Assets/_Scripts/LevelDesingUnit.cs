@@ -7,9 +7,11 @@ namespace LevelSystem
     {
         public int levelIndex;
         public Level level;
+        public int TreeCount;
         [SerializeField] MeshRenderer[] wallsMesh;
         [SerializeField] MeshRenderer GroundMesh;
         [SerializeField] GameObject TreeSpawnParent;
+        public Collider nextCollider,frontCollider;
         [Header("Store Area")]
         [SerializeField] GameObject bladeStore;
         [SerializeField] GameObject wood2coinTrade;
@@ -30,6 +32,7 @@ namespace LevelSystem
             bladeStore.SetActive(level.bladeStore);
             wood2coinTrade.SetActive(level.wood2coinTrade);
             coin2gemTrade.SetActive(level.coin2GemTrade);
+            TreeCount = TreeSpawnParent.transform.childCount * TreeSpawnParent.transform.GetChild(0).gameObject.transform.childCount;
         }
 
         Material GetMaterialFromResource(string _path, int i)

@@ -11,10 +11,7 @@ public class CurrencyTrade : MonoBehaviour
     {
         if (other.name == "NPCTriggerCollider")
         {
-            if (GameDataManager.CanSpendCoins(1, givenType))
-            {
-                TradeCurrency(givenType, takenType, tradeAmount);
-            }
+          TradeCurrency(givenType, takenType, tradeAmount);
         }
     }
     private void OnTriggerExit(Collider other)

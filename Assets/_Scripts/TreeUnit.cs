@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using LevelSystem;
 public class TreeUnit : MonoBehaviour
 {
     public Tree tree;
@@ -37,7 +37,6 @@ public class TreeUnit : MonoBehaviour
                 //SoundManager.Instance.Play(SoundManager.Sounds.leafFall,false);
                 break;
             case TreeState.chopped:
-                Debug.Log("EventState inside");
                 OpenChildRigidbodys(BotLeafs);
                 fullTree.enabled = false;
                 wood.enabled = true;
@@ -48,6 +47,7 @@ public class TreeUnit : MonoBehaviour
                 wood.enabled = false;
                 GameDataManager.AddCoins(copiedTree.givenGold, CollectType.wood);
                 SoundManager.Instance.Play(SoundManager.Sounds.treeDestroy,false);
+                LevelManager.OnTreeBreak.Invoke();
                 Helpers.Wait(this, 2f, () => { StaticTree.transform.parent.gameObject.SetActive(false); });
                 break;
             default:

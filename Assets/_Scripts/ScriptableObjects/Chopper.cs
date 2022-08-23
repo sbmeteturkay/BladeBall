@@ -23,8 +23,8 @@ public class Chopper : ScriptableObject
     }
     public void SetScale(float value)
     {
-        scale = value/50;
-        capacity =(int)scale* 10;
+        capacity = (int)value;
+        scale = value * 2 / 10;
     }
     public void SetEnergy(float value)
     {

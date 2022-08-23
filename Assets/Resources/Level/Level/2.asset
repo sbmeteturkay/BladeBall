@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundType: 2
   wood2coinTrade: 1
-  coin2GemTrade: 0
+  coin2GemTrade: 1
   bladeStore: 1
