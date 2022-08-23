@@ -25,9 +25,12 @@ public class CurrencyTrade : MonoBehaviour
         switch (give)
         {
             case CollectType.wood:
-                GameDataManager.SpendCoins(1, give);
-                GameDataManager.AddCoins(amount, take);
-                SoundManager.Instance.Play(SoundManager.Sounds.tradeCoin, true, false);
+                if (GameDataManager.CanSpendCoins(1, CollectType.wood))
+                {
+                    GameDataManager.SpendCoins(1, give);
+                    GameDataManager.AddCoins(amount, take);
+                    SoundManager.Instance.Play(SoundManager.Sounds.tradeCoin, true, false);
+                }
                 break;
             case CollectType.coin:
                 if (GameDataManager.CanSpendCoins(amount, CollectType.coin))
