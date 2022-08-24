@@ -11,6 +11,7 @@ public class PlayerUnit : StaticInstance<PlayerUnit>
     Vector3 scale = new Vector3(1, 1, 1);
     public int CheckCapacity()
     {
+        Debug.Log("chopper capacity " + chopper.capacity +" get wood:"+ GameDataManager.GetWood());
         return chopper.capacity - GameDataManager.GetWood();
     }
     public void UpdateCapacityAnimation()
@@ -27,11 +28,11 @@ public class PlayerUnit : StaticInstance<PlayerUnit>
     {
         scale.Set(chopper.scale, chopper.scale, chopper.scale);
         ScaleObject.transform.localScale = scale;
-        dg_simpleCamFollow.scaleFactor.Set(0, scale.y, -scale.z);
+        dg_simpleCamFollow.scaleFactor.Set(0, scale.y*2, -scale.z*2);
     }
     public void UpdateBladeModel(int i)
     {
-        Debug.Log((int)chopper.blade.bladeModelIndex);
+       // Debug.Log((int)chopper.blade.bladeModelIndex);
         BladeParent.transform.GetChild((int)chopper.blade.bladeModelIndex).gameObject.SetActive(false);
         BladeParent.transform.GetChild(i).gameObject.SetActive(true);
     }

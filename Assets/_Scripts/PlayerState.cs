@@ -34,7 +34,7 @@ public class PlayerState : StaticInstance<PlayerState>
                 break;
         }
         OnEventChange?.Invoke(bladeState);
-       // Debug.Log(State);
+        Debug.Log("Blade stade"+State+"capacity:" +PlayerUnit.Instance.CheckCapacity());
     }
 
 }

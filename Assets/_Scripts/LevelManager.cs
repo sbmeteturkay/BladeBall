@@ -114,13 +114,10 @@ namespace LevelSystem
             i %= 3;
             i++;
             //
-            Debug.Log("Level data" + i);
             string path = "Level/Level/"+ i.ToString();
-            Debug.Log(path);
             var lvl= Resources.Load<Level>(path);
             if (lvl!=null)
             {
-                Debug.Log("LEVEL EXIST "+i);
                 return lvl;
             }
                 

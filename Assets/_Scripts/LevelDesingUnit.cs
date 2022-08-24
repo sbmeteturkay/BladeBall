@@ -42,13 +42,11 @@ namespace LevelSystem
             i++;
             string path = "Level/Materials/" + _path +"/" +i.ToString();
             var mat = Resources.Load<Material>(path);
-            Debug.Log(path);
             if (mat!=null)
             {
                 return mat;
             }
             else {
-                Debug.Log("Default mat: "+ "Level / Materials / " + _path + " / " + "0");
                 return Resources.Load<Material>("Level/Materials/" + _path + "/" + "0");
             }
                 

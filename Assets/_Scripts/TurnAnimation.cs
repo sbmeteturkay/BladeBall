@@ -9,7 +9,7 @@ public class TurnAnimation : MonoBehaviour
     float turnSpeed = 1;
     //private void Awake() => PlayerState.OnEventChange += PlayerState_OnEventChange;
 
-    private void Start()
+    private void Awake()
     {
         PlayerState.OnEventChange += PlayerState_OnEventChange;
         PlayerUnit.Instance.chopper.OnBladeChange += Blade_OnBladeChange;
@@ -27,6 +27,7 @@ public class TurnAnimation : MonoBehaviour
     private void PlayerState_OnEventChange(BladeState obj)
     {
         turning = obj == BladeState.Standing;
+        Debug.Log("turning:" + turning);
         if (!turning)
             transform.DOPlay();
         else
