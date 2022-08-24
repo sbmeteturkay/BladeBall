@@ -27,6 +27,7 @@ public class PlayerUnit : StaticInstance<PlayerUnit>
     {
         scale.Set(chopper.scale, chopper.scale, chopper.scale);
         ScaleObject.transform.localScale = scale;
+        dg_simpleCamFollow.scaleFactor.Set(0, scale.y, -scale.z);
     }
     public void UpdateBladeModel(int i)
     {

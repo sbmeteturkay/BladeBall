@@ -12,6 +12,8 @@ public class dg_simpleCamFollow : MonoBehaviour
     Vector3 whereCameraShouldBe;
     bool warningAlreadyShown = false;
 
+    //when scale changes player unit affect this value too.
+    public static Vector3 scaleFactor = new Vector3(0,0,0);
     private void Start() {
         if (takeOffsetFromInitialPos && target != null) generalOffset = transform.position - target.position;
     }
@@ -19,7 +21,7 @@ public class dg_simpleCamFollow : MonoBehaviour
     void FixedUpdate()
     {
         if (target != null) {
-            whereCameraShouldBe = target.position + generalOffset;
+            whereCameraShouldBe = target.position + generalOffset+scaleFactor;
             transform.position = Vector3.Lerp(transform.position, whereCameraShouldBe, 1 / laziness);
 
             if (lookAtTarget) transform.LookAt(target);

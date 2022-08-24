@@ -1,17 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CurrencyTrade : MonoBehaviour
 {
     [SerializeField] CollectType givenType;
     [SerializeField] CollectType takenType;
-    [SerializeField] int tradeAmount=5;
+    [SerializeField] int givenAmount=5;
+    [SerializeField] int takenAmount = 1;
+    [SerializeField] TMP_Text giveText, takeText;
+    private void Start()
+    {
+        giveText.text = givenAmount.ToString();
+        takeText.text = takenAmount.ToString();
+    }
     private void OnTriggerStay(Collider other)
     {
         if (other.name == "NPCTriggerCollider")
         {
-          TradeCurrency(givenType, takenType, tradeAmount);
+          TradeCurrency(givenType, takenType, givenAmount,takenAmount);
         }
     }
     private void OnTriggerExit(Collider other)
@@ -20,23 +26,23 @@ public class CurrencyTrade : MonoBehaviour
         {
         }
     }
-    void TradeCurrency(CollectType give,CollectType take, int amount)
+    void TradeCurrency(CollectType give,CollectType take, int _givenAmount,int _takenAmount)
     {
         switch (give)
         {
             case CollectType.wood:
-                if (GameDataManager.CanSpendCoins(1, CollectType.wood))
+                if (GameDataManager.CanSpendCoins(_givenAmount, CollectType.wood))
                 {
-                    GameDataManager.SpendCoins(1, give);
-                    GameDataManager.AddCoins(amount, take);
+                    GameDataManager.SpendCoins(_givenAmount, give);
+                    GameDataManager.AddCoins(_takenAmount, take);
                     SoundManager.Instance.Play(SoundManager.Sounds.tradeCoin, true, false);
                 }
                 break;
             case CollectType.coin:
-                if (GameDataManager.CanSpendCoins(amount, CollectType.coin))
+                if (GameDataManager.CanSpendCoins(_givenAmount, CollectType.coin))
                 {
-                    GameDataManager.SpendCoins(amount, give);
-                    GameDataManager.AddCoins(1, take);
+                    GameDataManager.SpendCoins(_givenAmount, give);
+                    GameDataManager.AddCoins(_takenAmount, take);
                     SoundManager.Instance.Play(SoundManager.Sounds.tradeCoin, true, false);
                 }
                 
