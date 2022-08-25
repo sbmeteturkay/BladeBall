@@ -20,7 +20,7 @@ public class CharacterItemUI : MonoBehaviour
 	[Space(20f)]
 	[SerializeField] Button itemButton;
 	[SerializeField] Image itemImage;
-	[SerializeField] Outline itemOutline;
+	[SerializeField] UnityEngine.UI.Outline itemOutline;
 	[SerializeField] GameObject selected;
 
 	//--------------------------------------------------------------

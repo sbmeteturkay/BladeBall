@@ -24,10 +24,12 @@ namespace LevelSystem
             {
                 wallMat = wallsMesh[i].materials;
                 wallMat[0] = GetMaterialFromResource("Walls", (int)level.groundType);
+                wallMat[0].color = level.groundColor;
                 wallsMesh[i].materials = wallMat;
             }
             wallMat = GroundMesh.materials;
             wallMat[0] = GetMaterialFromResource("Ground", (int)level.groundType);
+            wallMat[0].color = level.groundColor;
             GroundMesh.materials = wallMat;
             bladeStore.SetActive(level.bladeStore);
             wood2coinTrade.SetActive(level.wood2coinTrade);
