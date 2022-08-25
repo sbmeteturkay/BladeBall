@@ -55,7 +55,7 @@ public class BladeAction : StaticInstance<BladeAction>
                 if (tree.currentHealth > 0)
                 {
                     tree.currentHealth -= blade.damage;
-                    SoundManager.Instance.Play(blade.hitSound, false,true);
+                    //SoundManager.Instance.Play(blade.hitSound, false,true);
                 }
                 break;
             default:

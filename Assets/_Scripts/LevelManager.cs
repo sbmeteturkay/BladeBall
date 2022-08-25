@@ -42,6 +42,11 @@ namespace LevelSystem
             levelDesingUnits[2].level = GetLevelDataFromResource(level + 2);
             levelDesingUnits[2].SetLevelIndex(level + 2);
         }
+
+
+        /// <summary>
+        /// ///@@@@@@@@WARNINNNGGGGGGGGGGGG LOOOOKK HERE MY MAN
+        /// </summary>
         private void LevelManager_OnTreeBreak()
         {
             brokenTrees++;
@@ -110,8 +115,6 @@ namespace LevelSystem
             levelDesingUnits[(int)playerPositionState].frontCollider.enabled = false;
             Debug.Log(playerPositionState);
             OnStateChange?.Invoke(playerPositionState);
-            levelDesingUnits[(int)playerPositionState].SetTreeColors();
-            levelDesingUnits[(int)playerPositionState].SpawnTrees();
         }
         Level GetLevelDataFromResource(int i)
         {
@@ -135,6 +138,10 @@ namespace LevelSystem
             first,
             middle,
             last
+        }
+        private void OnApplicationQuit()
+        {
+            GameDataManager.SavePlayerData();
         }
     }
 }

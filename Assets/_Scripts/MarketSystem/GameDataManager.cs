@@ -145,7 +145,7 @@ public static class GameDataManager
 		//UnityEngine.Debug.Log("<color=green>[PlayerData] Loaded.</color>");
 	}
 
-	static void SavePlayerData()
+	public static void SavePlayerData()
 	{
 		BinarySerializer.Save(playerData, "player-data.txt");
 		//UnityEngine.Debug.Log("<color=magenta>[PlayerData] Saved.</color>");

@@ -54,7 +54,7 @@ public class TreeUnit : MonoBehaviour
                 GameDataManager.AddCoins(copiedTree.givenGold, CollectType.wood);
                 SoundManager.Instance.Play(SoundManager.Sounds.treeDestroy,false);
                 LevelManager.OnTreeBreak.Invoke();
-                Helpers.Wait(this, 2f, () => { StaticTree.transform.parent.gameObject.SetActive(false); });
+                Destroy(gameObject, 1f);
                 break;
             default:
                 
