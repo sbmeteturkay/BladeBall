@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba1463aca387a784cbdb51a254f6a921, type: 3}
   m_Name: 2
   m_EditorClassIdentifier: 
-  groundType: 2
+  groundType: 1
+  groundColor: {r: 0.93050337, g: 1, b: 0.8443396, a: 1}
+  treeModel: 0
+  firstTreeColor: {r: 0.60115105, g: 0.8301887, b: 0.4503382, a: 1}
+  secondTreeColor: {r: 0.12565653, g: 0.3207547, b: 0, a: 1}
+  randomColor: 0
   wood2coinTrade: 1
   coin2GemTrade: 1
   bladeStore: 1

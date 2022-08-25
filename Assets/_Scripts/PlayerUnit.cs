@@ -11,7 +11,7 @@ public class PlayerUnit : StaticInstance<PlayerUnit>
     Vector3 scale = new Vector3(1, 1, 1);
     public int CheckCapacity()
     {
-        Debug.Log("chopper capacity " + chopper.capacity +" get wood:"+ GameDataManager.GetWood());
+        //Debug.Log("chopper capacity " + chopper.capacity +" get wood:"+ GameDataManager.GetWood());
         return chopper.capacity - GameDataManager.GetWood();
     }
     public void UpdateCapacityAnimation()

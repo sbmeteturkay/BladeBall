@@ -28,16 +28,20 @@ namespace LevelSystem
             if (!PlayerPrefs.HasKey("level"))
                 PlayerPrefs.SetInt("level", 1);
             level = PlayerPrefs.GetInt("level");
-            OnStateChange.Invoke(playerPositionState);
-            levelDesingUnits[1].level = GetLevelDataFromResource(level+1);
-            levelDesingUnits[1].SetLevelIndex(level+1);
-            levelDesingUnits[2].level = GetLevelDataFromResource(level + 2);
-            levelDesingUnits[2].SetLevelIndex(level + 2);
+            SetNextLevelData();
             SetLevelText();
             OnTreeBreak += LevelManager_OnTreeBreak;
             levelProgressBar.fillAmount =(float) ((float)brokenTrees / (((float)levelDesingUnits[(int)playerPositionState].TreeCount / 10) * 9f));
         }
 
+        void SetNextLevelData()
+        {
+            OnStateChange.Invoke(playerPositionState);
+            levelDesingUnits[1].level = GetLevelDataFromResource(level + 1);
+            levelDesingUnits[1].SetLevelIndex(level + 1);
+            levelDesingUnits[2].level = GetLevelDataFromResource(level + 2);
+            levelDesingUnits[2].SetLevelIndex(level + 2);
+        }
         private void LevelManager_OnTreeBreak()
         {
             brokenTrees++;
@@ -79,10 +83,10 @@ namespace LevelSystem
                     break;
             }
             //this function loads data of level place while setting level
-            Debug.Log((int)obj);
             levelDesingUnits[(int)obj].level=GetLevelDataFromResource(level);
             levelDesingUnits[(int)obj].SetLevelIndex(level);
-            
+            levelDesingUnits[(int)playerPositionState].SetTreeColors();
+            levelDesingUnits[(int)playerPositionState].SpawnTrees();
         }
         public void ChangePositionState()
         {
@@ -106,12 +110,14 @@ namespace LevelSystem
             levelDesingUnits[(int)playerPositionState].frontCollider.enabled = false;
             Debug.Log(playerPositionState);
             OnStateChange?.Invoke(playerPositionState);
+            levelDesingUnits[(int)playerPositionState].SetTreeColors();
+            levelDesingUnits[(int)playerPositionState].SpawnTrees();
         }
         Level GetLevelDataFromResource(int i)
         {
             //to avoid default level which is 0
             i--;
-            i %= 3;
+            i %= 6;
             i++;
             //
             string path = "Level/Level/"+ i.ToString();

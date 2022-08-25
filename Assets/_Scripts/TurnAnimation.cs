@@ -27,7 +27,7 @@ public class TurnAnimation : MonoBehaviour
     private void PlayerState_OnEventChange(BladeState obj)
     {
         turning = obj == BladeState.Standing;
-        Debug.Log("turning:" + turning);
+        //Debug.Log("turning:" + turning);
         if (!turning)
             transform.DOPlay();
         else

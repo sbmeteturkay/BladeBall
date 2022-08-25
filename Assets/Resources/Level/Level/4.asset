@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba1463aca387a784cbdb51a254f6a921, type: 3}
-  m_Name: 3
+  m_Name: 4
   m_EditorClassIdentifier: 
   groundType: 1
-  groundColor: {r: 0.7122642, g: 1, b: 0.98220235, a: 1}
+  groundColor: {r: 0.9992254, g: 0.8443396, b: 1, a: 1}
   treeModel: 0
-  firstTreeColor: {r: 0.5093005, g: 0.7052272, b: 0.990566, a: 1}
-  secondTreeColor: {r: 0.13679248, g: 0.4876899, b: 1, a: 1}
+  firstTreeColor: {r: 0.5660378, g: 0.38714847, b: 0.5660378, a: 1}
+  secondTreeColor: {r: 0.5377358, g: 0.053266283, b: 0.5377358, a: 1}
   randomColor: 0
   wood2coinTrade: 1
   coin2GemTrade: 1

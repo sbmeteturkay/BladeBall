@@ -9,6 +9,7 @@ namespace LevelSystem
         [Header("Level Area Desing")]
         public GroundType groundType;
         public Color groundColor=Color.white;
+        public TreeModel treeModel=TreeModel.defaulttTree;
         public Color firstTreeColor = Color.white;
         public Color secondTreeColor = Color.white;
         public bool randomColor = false;
@@ -22,6 +23,10 @@ namespace LevelSystem
             color,
             sand,
             lava
+        }
+        public enum TreeModel
+        {
+            defaulttTree
         }
     }
 }

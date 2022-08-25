@@ -11,18 +11,24 @@ public class TreeUnit : MonoBehaviour
     [SerializeField] Transform Wood;
     [Header("LowPoly version of trees without any rigidbodys or multiple meshes for performance")]
     [SerializeField] GameObject StaticTree;
+    [SerializeField] MeshRenderer treeMat;
     [Header("Colliders before and after destruction")]
     [SerializeField] Collider fullTree;
     [SerializeField] Collider wood;
     Tree copiedTree;
+    public static Color treeColor,secondSideTreeColor;
+    public bool secondSideTree = false;
     private void Start()
     {
         copiedTree = ScriptableObject.CreateInstance<Tree>();
-        copiedTree.color = tree.color;
         copiedTree.currentHealth = tree.currentHealth;
         copiedTree.health = tree.health;
         copiedTree.treeState = tree.treeState;
-
+        if (secondSideTree)
+        {
+            treeMat.material.color = secondSideTreeColor;
+        }
+        else { treeMat.material.color = treeColor; }
         copiedTree.OnEventChange += CopiedTree_OnEventChange;
     }
 

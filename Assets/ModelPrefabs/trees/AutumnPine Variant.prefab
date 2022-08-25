@@ -6046,6 +6046,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1032635864143903880}
     - target: {fileID: 2957476651507366794, guid: a4692095c86c79941940a412d07868ee, type: 3}
+      propertyPath: treeMat
+      value: 
+      objectReference: {fileID: 1349886497}
+    - target: {fileID: 2957476651507366794, guid: a4692095c86c79941940a412d07868ee, type: 3}
       propertyPath: BotLeafs
       value: 
       objectReference: {fileID: 312922996}

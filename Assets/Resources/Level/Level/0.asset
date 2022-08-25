@@ -13,6 +13,10 @@ MonoBehaviour:
   m_Name: 0
   m_EditorClassIdentifier: 
   groundType: 0
+  groundColor: {r: 1, g: 1, b: 1, a: 1}
+  firstTreeColor: {r: 1, g: 1, b: 1, a: 1}
+  secondTreeColor: {r: 1, g: 1, b: 1, a: 1}
+  randomColor: 0
   wood2coinTrade: 1
   coin2GemTrade: 1
   bladeStore: 1
