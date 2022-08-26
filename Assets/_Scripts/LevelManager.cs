@@ -32,11 +32,12 @@ namespace LevelSystem
             SetLevelText();
             OnTreeBreak += LevelManager_OnTreeBreak;
             levelProgressBar.fillAmount =(float) ((float)brokenTrees / (((float)levelDesingUnits[(int)playerPositionState].TreeCount / 10) * 9f));
+
+            OnStateChange.Invoke(playerPositionState);
         }
 
         void SetNextLevelData()
         {
-            OnStateChange.Invoke(playerPositionState);
             levelDesingUnits[1].level = GetLevelDataFromResource(level + 1);
             levelDesingUnits[1].SetLevelIndex(level + 1);
             levelDesingUnits[2].level = GetLevelDataFromResource(level + 2);
@@ -50,9 +51,12 @@ namespace LevelSystem
         private void LevelManager_OnTreeBreak()
         {
             brokenTrees++;
-            levelProgressBar.fillAmount = (float)((float)brokenTrees / (((float)levelDesingUnits[(int)playerPositionState].TreeCount / 10) * 9f));
-            if (levelProgressBar.fillAmount == 1)
+            Debug.Log("broken treees" + brokenTrees);
+            levelProgressBar.fillAmount = (float)((float)brokenTrees / (((float)levelDesingUnits[(int)playerPositionState].TreeCount / 10) * 8f));
+            Debug.Log("fill amount: "+levelProgressBar.fillAmount);
+            if (levelProgressBar.fillAmount == 1&&brokenTrees!=0)
             {
+                brokenTrees = 0;
                 LevelUp();
             }
         }
@@ -90,8 +94,8 @@ namespace LevelSystem
             //this function loads data of level place while setting level
             levelDesingUnits[(int)obj].level=GetLevelDataFromResource(level);
             levelDesingUnits[(int)obj].SetLevelIndex(level);
-            levelDesingUnits[(int)playerPositionState].SetTreeColors();
-            levelDesingUnits[(int)playerPositionState].SpawnTrees();
+            levelDesingUnits[(int)obj].SetTreeColors();
+            levelDesingUnits[(int)obj].SpawnTrees();
         }
         public void ChangePositionState()
         {
@@ -99,6 +103,7 @@ namespace LevelSystem
         }
         public void LevelUp()
         {
+            Debug.Log("LEVEL UPPPPPPPPPPP");
             brokenTrees = 0;
             levelDesingUnits[(int)playerPositionState].nextCollider.enabled = false;
             level++;
@@ -118,7 +123,7 @@ namespace LevelSystem
         }
         Level GetLevelDataFromResource(int i)
         {
-            //to avoid default level which is 0
+            //to avoid default level which is 0, TYPE LAST NUMBER OF CREATED LEVELS
             i--;
             i %= 6;
             i++;

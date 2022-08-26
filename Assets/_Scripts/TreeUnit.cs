@@ -53,6 +53,7 @@ public class TreeUnit : MonoBehaviour
                 wood.enabled = false;
                 GameDataManager.AddCoins(copiedTree.givenGold, CollectType.wood);
                 SoundManager.Instance.Play(SoundManager.Sounds.treeDestroy,false);
+                Debug.Log("tree break");
                 LevelManager.OnTreeBreak.Invoke();
                 Destroy(gameObject, 1f);
                 break;

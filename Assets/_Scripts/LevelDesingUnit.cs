@@ -28,13 +28,15 @@ namespace LevelSystem
             wood2coinTrade.SetActive(level.wood2coinTrade);
             coin2gemTrade.SetActive(level.coin2GemTrade);
             #endregion
-            TreeCount = TreeSpawnParent.transform.GetChild(0).transform.childCount * TreeSpawnParent.transform.GetChild(0).transform.GetChild(0).gameObject.transform.childCount;
         }
         public void SpawnTrees()
         {
+            Debug.Log(TreeSpawnParent.transform.GetChild(0).gameObject.name);
             Destroy(TreeSpawnParent.transform.GetChild(0).gameObject);
             var forest = GetPrefabFromResource((int)level.treeModel);
-            Instantiate(forest, TreeSpawnParent.transform);
+            var obj=Instantiate(forest, TreeSpawnParent.transform);
+            TreeCount = obj.transform.childCount * obj.transform.GetChild(0).gameObject.transform.childCount;
+            Debug.Log("Tree count" + TreeCount);
         }
         public void SetTreeColors()
         {

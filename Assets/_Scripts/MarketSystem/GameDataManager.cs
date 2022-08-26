@@ -97,8 +97,6 @@ public static class GameDataManager
             default:
                 break;
         }
-        
-		SavePlayerData();
 		GameSharedUI.Instance.UpdateCoinsUIText();
 	}
 
@@ -134,8 +132,6 @@ public static class GameDataManager
             default:
                 break;
         }
-        
-		SavePlayerData();
 		GameSharedUI.Instance.UpdateCoinsUIText();
 	}
 
