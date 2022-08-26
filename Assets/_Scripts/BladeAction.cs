@@ -6,7 +6,7 @@ public class BladeAction : StaticInstance<BladeAction>
 {
     [SerializeField] Animator bladeAnimation;
     Blade blade;
-    BladeState state;
+    BladeState state=BladeState.BladeOpen;
     void Start()
     {
         blade = PlayerUnit.Instance.chopper.blade;
@@ -43,7 +43,7 @@ public class BladeAction : StaticInstance<BladeAction>
         }
     }
 
-    public void DoDamage(Tree tree)
+    public void DoDamage(TreeUnit.TreeInstance tree)
     {
         switch (state)
         {
@@ -55,7 +55,7 @@ public class BladeAction : StaticInstance<BladeAction>
                 if (tree.currentHealth > 0)
                 {
                     tree.currentHealth -= blade.damage;
-                    //SoundManager.Instance.Play(blade.hitSound, false,true);
+                    SoundManager.Instance.Play(blade.hitSound, false,true);
                 }
                 break;
             default:
@@ -63,7 +63,7 @@ public class BladeAction : StaticInstance<BladeAction>
         }
 
     }
-    private void OnTriggerStay(Collider other)
+    /*private void OnTriggerStay(Collider other)
     {
         if(other.tag=="Tree" && PlayerState.Instance.State != BladeState.BladeOpen)
             PlayerState.Instance.ChangeState(BladeState.BladeOpen);
@@ -72,7 +72,7 @@ public class BladeAction : StaticInstance<BladeAction>
     {
         if(other.tag == "Tree" && PlayerState.Instance.State == BladeState.BladeOpen)
             PlayerState.Instance.ChangeState(BladeState.BladeOff);
-    }
+    }*/
 }
 
 enum Storage

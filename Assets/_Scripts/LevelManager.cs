@@ -51,9 +51,7 @@ namespace LevelSystem
         private void LevelManager_OnTreeBreak()
         {
             brokenTrees++;
-            Debug.Log("broken treees" + brokenTrees);
             levelProgressBar.fillAmount = (float)((float)brokenTrees / (((float)levelDesingUnits[(int)playerPositionState].TreeCount / 10) * 8f));
-            Debug.Log("fill amount: "+levelProgressBar.fillAmount);
             if (levelProgressBar.fillAmount == 1&&brokenTrees!=0)
             {
                 brokenTrees = 0;

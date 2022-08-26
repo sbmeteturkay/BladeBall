@@ -4,6 +4,19 @@ using UnityEngine;
 using LevelSystem;
 public class TreeUnit : MonoBehaviour
 {
+    public class TreeInstance
+    {
+        [Header("In Game Values")]
+        public float health = 12;
+        public float currentHealth = 12;
+        public TreeState treeState = TreeState.full;
+        public int givenGold = 1;
+        public void SetState(TreeState _treeState)
+        {
+            treeState = _treeState;
+        }
+    }
+
     public Tree tree;
     [Header("Parts to being destructed")]
     [SerializeField] Transform TopLeafs;
@@ -15,12 +28,11 @@ public class TreeUnit : MonoBehaviour
     [Header("Colliders before and after destruction")]
     [SerializeField] Collider fullTree;
     [SerializeField] Collider wood;
-    Tree copiedTree;
+    TreeInstance copiedTree=new TreeInstance();
     public static Color treeColor,secondSideTreeColor;
     public bool secondSideTree = false;
     private void Start()
     {
-        copiedTree = ScriptableObject.CreateInstance<Tree>();
         copiedTree.currentHealth = tree.currentHealth;
         copiedTree.health = tree.health;
         copiedTree.treeState = tree.treeState;
@@ -29,12 +41,12 @@ public class TreeUnit : MonoBehaviour
             treeMat.material.color = secondSideTreeColor;
         }
         else { treeMat.material.color = treeColor; }
-        copiedTree.OnEventChange += CopiedTree_OnEventChange;
     }
 
-    private void CopiedTree_OnEventChange(TreeState obj)
+    private void CopiedTree_OnEventChange(TreeState state)
     {
-        switch (copiedTree.treeState)
+        copiedTree.SetState(state);
+        switch (state)
         {
             case TreeState.full:
                 break;
@@ -53,7 +65,6 @@ public class TreeUnit : MonoBehaviour
                 wood.enabled = false;
                 GameDataManager.AddCoins(copiedTree.givenGold, CollectType.wood);
                 SoundManager.Instance.Play(SoundManager.Sounds.treeDestroy,false);
-                Debug.Log("tree break");
                 LevelManager.OnTreeBreak.Invoke();
                 Destroy(gameObject, 1f);
                 break;
@@ -75,17 +86,17 @@ public class TreeUnit : MonoBehaviour
         if (copiedTree.treeState==TreeState.full && copiedTree.currentHealth <= tree.health / 3 * 2)
         {
             if(copiedTree.treeState!= TreeState.leafless)
-                copiedTree.SetState(TreeState.leafless);
+                CopiedTree_OnEventChange(TreeState.leafless);
         }
         if (copiedTree.treeState == TreeState.leafless && copiedTree.currentHealth <= tree.health / 3 * 1)
         {
             if (copiedTree.treeState != TreeState.chopped)
-                copiedTree.SetState(TreeState.chopped);
+                CopiedTree_OnEventChange(TreeState.chopped);
         }
         if (copiedTree.treeState == TreeState.chopped && copiedTree.currentHealth <= 0)
         {
             if (copiedTree.treeState != TreeState.destroyed)
-                copiedTree.SetState(TreeState.destroyed);
+                CopiedTree_OnEventChange(TreeState.destroyed);
         }
     }
     void OpenChildRigidbodys(Transform parent)
@@ -95,7 +106,7 @@ public class TreeUnit : MonoBehaviour
         foreach (Transform child in parent)
         {
             child.GetComponent<Rigidbody>().isKinematic = false;
-            Destroy(child.gameObject, 2);
+            //Destroy(child.gameObject);
         }
     }
 }

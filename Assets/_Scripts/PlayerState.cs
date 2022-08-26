@@ -15,11 +15,6 @@ public class PlayerState : StaticInstance<PlayerState>
         
         // fast switch with enum sw(tab)(tab)enumVariableName(tab)(downArrow)
 
-        if (PlayerUnit.Instance.CheckCapacity() == 0 && State != BladeState.Full)
-        {
-            ChangeState(BladeState.Full);
-            return;
-        }
         switch (bladeState)
         {
             case BladeState.Standing:
@@ -34,7 +29,18 @@ public class PlayerState : StaticInstance<PlayerState>
                 break;
         }
         OnEventChange?.Invoke(bladeState);
-        //Debug.Log("Blade stade"+State+"capacity:" +PlayerUnit.Instance.CheckCapacity());
+    }
+    private void FixedUpdate()
+    {
+        if (PlayerUnit.Instance.CheckCapacity() == 0)
+        {
+            if(State != BladeState.Full)
+                ChangeState(BladeState.Full);
+        }
+        else {
+            if(State!=BladeState.BladeOpen)
+                ChangeState(BladeState.BladeOpen); 
+        }
     }
 
 }
