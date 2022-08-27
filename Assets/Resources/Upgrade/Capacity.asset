@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 01c9dae7ae1e3f54fab8e1c371b42c05, type: 3}
-  m_Name: Scale 1
+  m_Name: Capacity
   m_EditorClassIdentifier: Assembly-CSharp::UpgradeMaterial
-  startPrice: 1
-  startValue: 1
-  upgradeName: SCALE
+  startPrice: 15
+  startValue: 10
+  upgradeName: CAPACITY
   level: 1
   maxLevel: 20
   infinite: 0
-  price: 1
-  priceIncreaseRate: 1
+  price: 10
+  priceIncreaseRate: 2
   moneyType: 1
-  value: 1
-  valueIncreaseRate: 1
-  referenceImage: {fileID: 21300000, guid: 8392a9b181e0bb54cad7f70ded221dc1, type: 3}
+  value: 10
+  valueIncreaseRate: 2
+  referenceImage: {fileID: 21300000, guid: 84402a7baa2e08541900e8ac1fa344f8, type: 3}

@@ -16,6 +16,7 @@ public class Chopper : ScriptableObject
     [Header("Upgrade Values")]
     public UpgradeMaterial speedData;
     public UpgradeMaterial scaleData;
+    public UpgradeMaterial capacityData;
     public UpgradeMaterial energyData;
     public void SetMovementSpeed(float value)
     {
@@ -23,8 +24,12 @@ public class Chopper : ScriptableObject
     }
     public void SetScale(float value)
     {
-        capacity = (int)value*2;
         scale = value * 2 / 10;
+    }
+    public void SetCapacity(float value)
+    {
+        Debug.LogError("set capacit"+value);
+        capacity = (int)value;
     }
     public void SetEnergy(float value)
     {
@@ -42,6 +47,7 @@ public class Chopper : ScriptableObject
         SetMovementSpeed(speedData.value);
         SetEnergy(energyData.value);
         SetScale(scaleData.value);
+        SetCapacity(capacityData.value);
         OnValueChange?.Invoke(this);
     }
     public void Start()
@@ -50,6 +56,12 @@ public class Chopper : ScriptableObject
         scaleData.OnValueChange += ScaleData_OnValueChange;
         speedData.OnValueChange += SpeedData_OnValueChange;
         energyData.OnValueChange += EnergyData_OnValueChange;
+        capacityData.OnValueChange += CapacityData_OnValueChange;
+    }
+
+    private void CapacityData_OnValueChange(UpgradeMaterial obj)
+    {
+        ReloadValues();
     }
 
     private void EnergyData_OnValueChange(UpgradeMaterial obj)

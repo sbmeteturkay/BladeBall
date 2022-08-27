@@ -8,6 +8,7 @@ public class CurrencyTrade : MonoBehaviour
     [SerializeField] int givenAmount=5;
     [SerializeField] int takenAmount = 1;
     [SerializeField] TMP_Text giveText, takeText;
+    [SerializeField] AudioSource tradeSound;
     private void Start()
     {
         giveText.text = givenAmount.ToString();
@@ -18,7 +19,20 @@ public class CurrencyTrade : MonoBehaviour
         if (other.name == "NPCTriggerCollider")
         {
           TradeCurrency(givenType, takenType, givenAmount,takenAmount);
+            tradeSound.loop = true;
         }
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name == "NPCTriggerCollider")
+            tradeSound.Play();
+    }
+    private void OnTriggerExit(Collider other)
+        {
+            if (other.name == "NPCTriggerCollider")
+            {
+                tradeSound.loop = false;
+            }
     }
     void TradeCurrency(CollectType give,CollectType take, int _givenAmount,int _takenAmount)
     {
@@ -29,7 +43,7 @@ public class CurrencyTrade : MonoBehaviour
                 {
                     GameDataManager.SpendCoins(_givenAmount, give);
                     GameDataManager.AddCoins(_takenAmount, take);
-                    SoundManager.Instance.Play(SoundManager.Sounds.tradeCoin, true, false);
+                    //SoundManager.Instance.Play(SoundManager.Sounds.tradeCoin, true, false);
                 }
                 break;
             case CollectType.coin:
@@ -37,7 +51,7 @@ public class CurrencyTrade : MonoBehaviour
                 {
                     GameDataManager.SpendCoins(_givenAmount, give);
                     GameDataManager.AddCoins(_takenAmount, take);
-                    SoundManager.Instance.Play(SoundManager.Sounds.tradeCoin, true, false);
+                    //SoundManager.Instance.Play(SoundManager.Sounds.tradeCoin, true, false);
                 }
                 
                 break;

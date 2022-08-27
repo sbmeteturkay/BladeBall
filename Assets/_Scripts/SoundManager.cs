@@ -69,16 +69,15 @@ public class SoundManager : MonoBehaviour
 			CheckUIAvailableSource().pitch = 1;
 			if (CheckUIAvailableSource().clip != audioClips[(int)sound])
             {
+				CheckUIAvailableSource().Stop();
 				CheckUIAvailableSource().clip = audioClips[(int)sound];
 				CheckUIAvailableSource().Play();
             }
             else
             {
-				CheckUIAvailableSource().PlayDelayed(0.1f);
-			}
+				//CheckUIAvailableSource().PlayDelayed(0.1f);
 				
-			
-
+			}
 		}
 		else
 		{

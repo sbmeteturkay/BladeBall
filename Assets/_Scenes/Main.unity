@@ -10836,8 +10836,8 @@ MonoBehaviour:
   upgradeMaterials:
   - {fileID: 11400000, guid: 5916420a9f2bbd146abab7a814921f4d, type: 2}
   - {fileID: 11400000, guid: 996f0232d0fee7b4baf59c1eb139b959, type: 2}
-  - {fileID: 11400000, guid: 9ea759a6c14438843a93db5a45f8f24d, type: 2}
   - {fileID: 11400000, guid: 6fe86983c5986894fa2ee415eb8719dd, type: 2}
+  - {fileID: 11400000, guid: 9ea759a6c14438843a93db5a45f8f24d, type: 2}
 --- !u!4 &1311429170 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 440430, guid: 641fec17292c7ac4a9607002d28dbde2, type: 3}
