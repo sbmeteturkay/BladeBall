@@ -106,7 +106,7 @@ public class TreeUnit : MonoBehaviour
         foreach (Transform child in parent)
         {
             child.GetComponent<Rigidbody>().isKinematic = false;
-            //Destroy(child.gameObject);
+            Destroy(child.gameObject,2f);
         }
     }
 }

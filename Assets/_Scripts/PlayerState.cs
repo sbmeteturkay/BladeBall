@@ -30,7 +30,7 @@ public class PlayerState : StaticInstance<PlayerState>
         }
         OnEventChange?.Invoke(bladeState);
     }
-    private void FixedUpdate()
+    private void Update()
     {
         if (PlayerUnit.Instance.CheckCapacity() == 0)
         {

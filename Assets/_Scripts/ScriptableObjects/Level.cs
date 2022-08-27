@@ -26,7 +26,8 @@ namespace LevelSystem
         }
         public enum TreeModel
         {
-            defaulttTree
+            defaulttTree,
+            squareTree
         }
     }
 }

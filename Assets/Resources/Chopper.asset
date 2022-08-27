@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10ca030c9b620a143b53e4fc0af2cd9d, type: 3}
   m_Name: Chopper
   m_EditorClassIdentifier: 
-  blade: {fileID: 11400000, guid: b346c92d9844675469b75d35d376e5d0, type: 2}
+  blade: {fileID: 11400000, guid: 13f0b1c7c16bc004ea293d6bc7a40ce5, type: 2}
   movementSpeed: 17
   scale: 3
   energy: 1
   currentEnergy: 1
-  capacity: 7000
+  capacity: 2000
   speedData: {fileID: 11400000, guid: 5916420a9f2bbd146abab7a814921f4d, type: 2}
   scaleData: {fileID: 11400000, guid: 996f0232d0fee7b4baf59c1eb139b959, type: 2}
   energyData: {fileID: 11400000, guid: 9ea759a6c14438843a93db5a45f8f24d, type: 2}

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99c96f2557557d240b7a5ec9a45efd5e, type: 3}
-  m_Name: Tree5
+  m_Name: Tree5 1
   m_EditorClassIdentifier: 
-  gameObject: {fileID: 807333076322927700, guid: bf41ea6a132364940a348d6a24bdab5c, type: 3}
-  type: 1
-  count: 75
+  gameObject: {fileID: 196873034875748799, guid: 5e4277ae0ca139a40a500e5d2ba7ef91, type: 3}
+  type: 0
+  count: 100
   randomScale: {x: 1, y: 1}
   randomRotation: {x: -360, y: 360}

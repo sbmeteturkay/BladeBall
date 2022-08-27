@@ -20,12 +20,6 @@ public class CurrencyTrade : MonoBehaviour
           TradeCurrency(givenType, takenType, givenAmount,takenAmount);
         }
     }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.name == "NPCTriggerCollider")
-        {
-        }
-    }
     void TradeCurrency(CollectType give,CollectType take, int _givenAmount,int _takenAmount)
     {
         switch (give)
