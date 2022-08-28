@@ -31,6 +31,14 @@ public class TreeUnit : MonoBehaviour
     TreeInstance copiedTree=new TreeInstance();
     public static Color treeColor,secondSideTreeColor;
     public bool secondSideTree = false;
+
+    [Header("Rigidbodys")]
+    [SerializeField] Rigidbody[] topLeafsRB;
+    [SerializeField] Rigidbody[] botLeafsRB;
+    [SerializeField] Rigidbody[] woodRB;
+    List<Vector3> topLeafsRBTransforms = new List<Vector3>();
+    List<Vector3> botLeafsRBTransforms = new List<Vector3>();
+    List<Vector3> woodTransforms = new List<Vector3>();
     private void Start()
     {
         copiedTree.currentHealth = tree.currentHealth;
@@ -51,22 +59,23 @@ public class TreeUnit : MonoBehaviour
             case TreeState.full:
                 break;
             case TreeState.leafless:
-                OpenChildRigidbodys(TopLeafs);
+                OpenChildRigidbodys(TopLeafs,topLeafsRB,topLeafsRBTransforms);
                 //SoundManager.Instance.Play(SoundManager.Sounds.leafFall,false);
                 break;
             case TreeState.chopped:
-                OpenChildRigidbodys(BotLeafs);
+                OpenChildRigidbodys(BotLeafs,botLeafsRB,botLeafsRBTransforms);
                 fullTree.enabled = false;
                 wood.enabled = true;
                 //SoundManager.Instance.Play(SoundManager.Sounds.treeFall,false);
                 break;
             case TreeState.destroyed:
-                OpenChildRigidbodys(Wood);
+                OpenChildRigidbodys(Wood,woodRB,woodTransforms);
                 wood.enabled = false;
                 GameDataManager.AddCoins(copiedTree.givenGold, CollectType.wood);
                 SoundManager.Instance.Play(SoundManager.Sounds.treeDestroy,false);
                 LevelManager.OnTreeBreak.Invoke();
-                Destroy(gameObject, 1f);
+                Helpers.Wait(this, 3f, () => { ResetAll(); });
+                //
                 break;
             default:
                 
@@ -108,6 +117,56 @@ public class TreeUnit : MonoBehaviour
             child.GetComponent<Rigidbody>().isKinematic = false;
             Destroy(child.gameObject,2f);
         }
+    }
+    void OpenChildRigidbodys(Transform parent,Rigidbody[] rigidbodies, List<Vector3> transforms)
+    {
+        StaticTree.SetActive(false);
+        parent.gameObject.transform.parent.gameObject.SetActive(true);
+        for (int i = 0; i < rigidbodies.Length; i++)
+        {
+            rigidbodies[i].isKinematic = false;
+            transforms.Add(rigidbodies[i].position);
+        }
+        Debug.Log("msdalmdsadsa");
+        Helpers.Wait(this, 2f, () => { parent.gameObject.SetActive(false); });
+        Debug.Log("mölsdþadmösadsla");
+        //parent.gameObject.SetActive(false);
+    }
+
+    private void ResetAll()
+    {
+        ResetRB(woodRB, woodTransforms);
+        ResetRB(botLeafsRB, botLeafsRBTransforms);
+        ResetRB(topLeafsRB, topLeafsRBTransforms);
+        wood.enabled = false;
+        fullTree.enabled = true;
+        Wood.gameObject.SetActive(true);
+        TopLeafs.gameObject.SetActive(true);
+        BotLeafs.gameObject.SetActive(true);
+        BotLeafs.parent.gameObject.SetActive(false);
+        copiedTree.currentHealth = tree.currentHealth;
+        copiedTree.health = tree.health;
+        copiedTree.treeState = tree.treeState;
+        if (secondSideTree)
+        {
+            treeMat.material.color = secondSideTreeColor;
+        }
+        else { treeMat.material.color = treeColor; }
+        StaticTree.SetActive(true);
+    }
+    void ResetRB(Rigidbody[] rigidbodies,List<Vector3> transforms)
+    {
+        
+        for (int i = 0; i < rigidbodies.Length; i++)
+        {
+            rigidbodies[i].isKinematic = true;
+            rigidbodies[i].transform.position = transforms[i];
+            rigidbodies[i].velocity = new Vector3(0f, 0f, 0f);
+            rigidbodies[i].angularVelocity = new Vector3(0f, 0f, 0f);
+            rigidbodies[i].angularDrag = 0f;
+            //Destroy(child.gameObject, 2f);
+        }
+        transforms.Clear();
     }
 }
 public enum TreeState

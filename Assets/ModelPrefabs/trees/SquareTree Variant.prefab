@@ -1387,6 +1387,62 @@ PrefabInstance:
       propertyPath: fullTree
       value: 
       objectReference: {fileID: 1281691157119795644}
+    - target: {fileID: 2957476651507366794, guid: a4692095c86c79941940a412d07868ee, type: 3}
+      propertyPath: woodRB.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2957476651507366794, guid: a4692095c86c79941940a412d07868ee, type: 3}
+      propertyPath: woodRB.Array.data[0]
+      value: 
+      objectReference: {fileID: 5583882612444764387}
+    - target: {fileID: 2957476651507366794, guid: a4692095c86c79941940a412d07868ee, type: 3}
+      propertyPath: woodRB.Array.data[1]
+      value: 
+      objectReference: {fileID: 4538003868054960709}
+    - target: {fileID: 2957476651507366794, guid: a4692095c86c79941940a412d07868ee, type: 3}
+      propertyPath: woodRB.Array.data[2]
+      value: 
+      objectReference: {fileID: 6692943966912812376}
+    - target: {fileID: 2957476651507366794, guid: a4692095c86c79941940a412d07868ee, type: 3}
+      propertyPath: botLeafsRB.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2957476651507366794, guid: a4692095c86c79941940a412d07868ee, type: 3}
+      propertyPath: topLeafsRB.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2957476651507366794, guid: a4692095c86c79941940a412d07868ee, type: 3}
+      propertyPath: botLeafsRB.Array.data[0]
+      value: 
+      objectReference: {fileID: 7413696501549068216}
+    - target: {fileID: 2957476651507366794, guid: a4692095c86c79941940a412d07868ee, type: 3}
+      propertyPath: botLeafsRB.Array.data[1]
+      value: 
+      objectReference: {fileID: 4964831516265559678}
+    - target: {fileID: 2957476651507366794, guid: a4692095c86c79941940a412d07868ee, type: 3}
+      propertyPath: botLeafsRB.Array.data[2]
+      value: 
+      objectReference: {fileID: 2692213834029102884}
+    - target: {fileID: 2957476651507366794, guid: a4692095c86c79941940a412d07868ee, type: 3}
+      propertyPath: botLeafsRB.Array.data[3]
+      value: 
+      objectReference: {fileID: 6016991934978781258}
+    - target: {fileID: 2957476651507366794, guid: a4692095c86c79941940a412d07868ee, type: 3}
+      propertyPath: topLeafsRB.Array.data[0]
+      value: 
+      objectReference: {fileID: 4212702225927199604}
+    - target: {fileID: 2957476651507366794, guid: a4692095c86c79941940a412d07868ee, type: 3}
+      propertyPath: topLeafsRB.Array.data[1]
+      value: 
+      objectReference: {fileID: 9173730790581039082}
+    - target: {fileID: 2957476651507366794, guid: a4692095c86c79941940a412d07868ee, type: 3}
+      propertyPath: topLeafsRB.Array.data[2]
+      value: 
+      objectReference: {fileID: 6588255101611327907}
+    - target: {fileID: 2957476651507366794, guid: a4692095c86c79941940a412d07868ee, type: 3}
+      propertyPath: topLeafsRB.Array.data[3]
+      value: 
+      objectReference: {fileID: 714262431913567906}
     - target: {fileID: 5832033694270620426, guid: a4692095c86c79941940a412d07868ee, type: 3}
       propertyPath: m_IsActive
       value: 1

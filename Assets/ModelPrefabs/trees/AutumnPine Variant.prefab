@@ -47,7 +47,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4714541}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 0
@@ -2142,7 +2142,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733213543}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 0
@@ -3834,7 +3834,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1438421549}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 0
@@ -5960,6 +5960,57 @@ MonoBehaviour:
   fullTree: {fileID: 1166925870197316390}
   wood: {fileID: 1032635864143903880}
   secondSideTree: 0
+  topLeafsRB:
+  - {fileID: 665556854}
+  - {fileID: 123719946}
+  - {fileID: 463807392}
+  - {fileID: 1671989468}
+  - {fileID: 1985945244}
+  - {fileID: 319400228}
+  - {fileID: 1194961547}
+  - {fileID: 442670828}
+  - {fileID: 783195922}
+  - {fileID: 190664065}
+  - {fileID: 1536274273}
+  - {fileID: 1862924247}
+  - {fileID: 2097628595}
+  - {fileID: 486124187}
+  - {fileID: 10203628}
+  - {fileID: 1735783170}
+  botLeafsRB:
+  - {fileID: 1859766768}
+  - {fileID: 1346306159}
+  - {fileID: 160240313}
+  - {fileID: 711213153}
+  - {fileID: 1631883723}
+  - {fileID: 1388461646}
+  - {fileID: 791311365}
+  - {fileID: 1774344717}
+  - {fileID: 917351615}
+  - {fileID: 1375569638}
+  - {fileID: 138673174}
+  - {fileID: 1541403476}
+  - {fileID: 2060928225}
+  - {fileID: 2090125362}
+  - {fileID: 748753526}
+  - {fileID: 2012928542}
+  - {fileID: 232585918}
+  - {fileID: 1621496833}
+  - {fileID: 1495460804}
+  - {fileID: 1483285547}
+  - {fileID: 1134557687}
+  woodRB:
+  - {fileID: 281833809}
+  - {fileID: 1188665530}
+  - {fileID: 241792210}
+  - {fileID: 1687636612}
+  - {fileID: 950379703}
+  - {fileID: 1081135875}
+  - {fileID: 1715675577}
+  - {fileID: 362120166}
+  - {fileID: 608134059}
+  - {fileID: 1236180210}
+  - {fileID: 551199179}
 --- !u!136 &1032635864143903880
 CapsuleCollider:
   m_ObjectHideFlags: 0
