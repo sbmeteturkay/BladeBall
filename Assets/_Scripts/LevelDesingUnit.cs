@@ -1,4 +1,5 @@
 using System.IO;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace LevelSystem
@@ -18,6 +19,7 @@ namespace LevelSystem
         [SerializeField] GameObject coin2gemTrade;
         Material[] wallMat;
         Material material;
+        List<GameObject> assetForests=new List<GameObject>();
         void SetData()
         {
 
@@ -31,11 +33,22 @@ namespace LevelSystem
         }
         public void SpawnTrees()
         {
+            TreeUnit.spawnedLevelIndex= PlayerPrefs.GetInt("level");
             Debug.Log(TreeSpawnParent.transform.GetChild(0).gameObject.name);
-            Destroy(TreeSpawnParent.transform.GetChild(0)?.gameObject);
+            Destroy(TreeSpawnParent.transform.GetChild(0).gameObject);
             //TreeSpawnParent.transform.GetChild(0).gameObject.SetActive(false);
             var forest = GetPrefabFromResource((int)level.treeModel);
             var obj=Instantiate(forest, TreeSpawnParent.transform);
+            TreeCount = obj.transform.childCount * obj.transform.GetChild(0).gameObject.transform.childCount;
+            Debug.Log("Tree count" + TreeCount);
+        }
+        public void ReuseSpawnedTrees()
+        {
+            Debug.Log(TreeSpawnParent.transform.GetChild(0).gameObject.name);
+            //Destroy(TreeSpawnParent.transform.GetChild(0).gameObject);
+            //TreeSpawnParent.transform.GetChild(0).gameObject.SetActive(false);
+            var forest = GetPrefabFromResource((int)level.treeModel);
+            var obj = Instantiate(forest, TreeSpawnParent.transform);
             TreeCount = obj.transform.childCount * obj.transform.GetChild(0).gameObject.transform.childCount;
             Debug.Log("Tree count" + TreeCount);
         }

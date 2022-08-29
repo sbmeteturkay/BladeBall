@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Chopper
   m_EditorClassIdentifier: 
   blade: {fileID: 11400000, guid: b346c92d9844675469b75d35d376e5d0, type: 2}
-  movementSpeed: 17
-  scale: 1
+  movementSpeed: 13.400001
+  scale: 2.1399999
   energy: 1
   currentEnergy: 1
-  capacity: 3000
+  capacity: 10000
   speedData: {fileID: 11400000, guid: 5916420a9f2bbd146abab7a814921f4d, type: 2}
   scaleData: {fileID: 11400000, guid: 996f0232d0fee7b4baf59c1eb139b959, type: 2}
   capacityData: {fileID: 11400000, guid: 6fe86983c5986894fa2ee415eb8719dd, type: 2}

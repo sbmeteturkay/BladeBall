@@ -30,8 +30,9 @@ public class TreeUnit : MonoBehaviour
     [SerializeField] Collider wood;
     TreeInstance copiedTree=new TreeInstance();
     public static Color treeColor,secondSideTreeColor;
+    public static int spawnedLevelIndex = 1;
     public bool secondSideTree = false;
-
+    int spawnedIndex;
     [Header("Rigidbodys")]
     [SerializeField] Rigidbody[] topLeafsRB;
     [SerializeField] Rigidbody[] botLeafsRB;
@@ -41,6 +42,7 @@ public class TreeUnit : MonoBehaviour
     List<Vector3> woodTransforms = new List<Vector3>();
     private void Start()
     {
+        spawnedIndex = spawnedLevelIndex;
         copiedTree.currentHealth = tree.currentHealth;
         copiedTree.health = tree.health;
         copiedTree.treeState = tree.treeState;
@@ -73,8 +75,10 @@ public class TreeUnit : MonoBehaviour
                 wood.enabled = false;
                 GameDataManager.AddCoins(copiedTree.givenGold, CollectType.wood);
                 SoundManager.Instance.Play(SoundManager.Sounds.treeDestroy,false);
-                LevelManager.OnTreeBreak.Invoke();
-                Helpers.Wait(this, 3f, () => { ResetAll(); });
+                if (spawnedLevelIndex == spawnedIndex)
+                {
+                    LevelManager.OnTreeBreak.Invoke();
+                }                //Helpers.Wait(this, 3f, () => { ResetAll(); });
                 //
                 break;
             default:

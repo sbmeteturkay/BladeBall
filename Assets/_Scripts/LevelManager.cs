@@ -118,6 +118,7 @@ namespace LevelSystem
             levelDesingUnits[(int)playerPositionState].frontCollider.enabled = false;
             Debug.Log(playerPositionState);
             OnStateChange?.Invoke(playerPositionState);
+            levelProgressBar.fillAmount = 0;
         }
         Level GetLevelDataFromResource(int i)
         {
