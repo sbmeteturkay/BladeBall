@@ -1,3 +1,4 @@
+using System;
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ namespace LevelSystem
 {
     public class LevelDesingUnit : MonoBehaviour
     {
+        public static event Action OnTreeReload;
         public int levelIndex;
         public Level level;
         public int TreeCount;
@@ -19,7 +21,8 @@ namespace LevelSystem
         [SerializeField] GameObject coin2gemTrade;
         Material[] wallMat;
         Material material;
-        List<GameObject> assetForests=new List<GameObject>();
+        static List<GameObject> assetForests=new List<GameObject>();
+        static List<int> assetIndex = new List<int>();
         void SetData()
         {
 
@@ -31,26 +34,49 @@ namespace LevelSystem
             coin2gemTrade.SetActive(level.coin2GemTrade);
             #endregion
         }
+        bool CheckPrefab(int i)
+        {
+            if (assetIndex.Contains(i))
+                return true;
+            else
+                return false;
+        }
         public void SpawnTrees()
         {
             TreeUnit.spawnedLevelIndex= PlayerPrefs.GetInt("level");
             Debug.Log(TreeSpawnParent.transform.GetChild(0).gameObject.name);
-            Destroy(TreeSpawnParent.transform.GetChild(0).gameObject);
+            //Destroy(TreeSpawnParent.transform.GetChild(0).gameObject);
             //TreeSpawnParent.transform.GetChild(0).gameObject.SetActive(false);
-            var forest = GetPrefabFromResource((int)level.treeModel);
-            var obj=Instantiate(forest, TreeSpawnParent.transform);
-            TreeCount = obj.transform.childCount * obj.transform.GetChild(0).gameObject.transform.childCount;
+            if (CheckPrefab((int)level.treeModel))
+            {
+                ReuseSpawnedTrees((int)level.treeModel);
+                print("prefab exist");
+            }
+            else
+            {
+                var forest = GetPrefabFromResource((int)level.treeModel);
+                var obj = Instantiate(forest, TreeSpawnParent.transform);
+                TreeCount = obj.transform.childCount * obj.transform.GetChild(0).gameObject.transform.childCount;
+                assetForests.Insert((int)level.treeModel, obj);
+                assetIndex.Add((int)level.treeModel);
+            }
+
             Debug.Log("Tree count" + TreeCount);
         }
-        public void ReuseSpawnedTrees()
+        public void ReuseSpawnedTrees(int i)
         {
             Debug.Log(TreeSpawnParent.transform.GetChild(0).gameObject.name);
             //Destroy(TreeSpawnParent.transform.GetChild(0).gameObject);
             //TreeSpawnParent.transform.GetChild(0).gameObject.SetActive(false);
-            var forest = GetPrefabFromResource((int)level.treeModel);
-            var obj = Instantiate(forest, TreeSpawnParent.transform);
+            //var forest = GetPrefabFromResource((int)level.treeModel);
+            //var obj = Instantiate(forest, TreeSpawnParent.transform);
+            var obj = assetForests[i];
+            obj.transform.parent = TreeSpawnParent.transform;
+            obj.transform.localPosition = new Vector3(0, 0, 0);
+            Debug.Log(obj.transform.position);
             TreeCount = obj.transform.childCount * obj.transform.GetChild(0).gameObject.transform.childCount;
             Debug.Log("Tree count" + TreeCount);
+            OnTreeReload.Invoke();
         }
         public void SetTreeColors()
         {

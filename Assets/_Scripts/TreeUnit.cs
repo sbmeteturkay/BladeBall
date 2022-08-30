@@ -22,17 +22,21 @@ public class TreeUnit : MonoBehaviour
     [SerializeField] Transform TopLeafs;
     [SerializeField] Transform BotLeafs;
     [SerializeField] Transform Wood;
+
     [Header("LowPoly version of trees without any rigidbodys or multiple meshes for performance")]
     [SerializeField] GameObject StaticTree;
     [SerializeField] MeshRenderer treeMat;
+    
     [Header("Colliders before and after destruction")]
     [SerializeField] Collider fullTree;
     [SerializeField] Collider wood;
     TreeInstance copiedTree=new TreeInstance();
     public static Color treeColor,secondSideTreeColor;
-    public static int spawnedLevelIndex = 1;
     public bool secondSideTree = false;
+    
     int spawnedIndex;
+    public static int spawnedLevelIndex = 1;
+    
     [Header("Rigidbodys")]
     [SerializeField] Rigidbody[] topLeafsRB;
     [SerializeField] Rigidbody[] botLeafsRB;
@@ -51,6 +55,13 @@ public class TreeUnit : MonoBehaviour
             treeMat.material.color = secondSideTreeColor;
         }
         else { treeMat.material.color = treeColor; }
+        LevelDesingUnit.OnTreeReload += LevelDesingUnit_OnTreeReload;
+    }
+
+    private void LevelDesingUnit_OnTreeReload()
+    {
+        if(spawnedIndex==spawnedLevelIndex-2)
+            ResetAll();
     }
 
     private void CopiedTree_OnEventChange(TreeState state)
@@ -129,11 +140,9 @@ public class TreeUnit : MonoBehaviour
         for (int i = 0; i < rigidbodies.Length; i++)
         {
             rigidbodies[i].isKinematic = false;
-            transforms.Add(rigidbodies[i].position);
+            transforms.Add(rigidbodies[i].transform.localPosition);
         }
-        Debug.Log("msdalmdsadsa");
         Helpers.Wait(this, 2f, () => { parent.gameObject.SetActive(false); });
-        Debug.Log("mölsdþadmösadsla");
         //parent.gameObject.SetActive(false);
     }
 
@@ -151,6 +160,7 @@ public class TreeUnit : MonoBehaviour
         copiedTree.currentHealth = tree.currentHealth;
         copiedTree.health = tree.health;
         copiedTree.treeState = tree.treeState;
+        spawnedIndex = spawnedLevelIndex;
         if (secondSideTree)
         {
             treeMat.material.color = secondSideTreeColor;
@@ -164,7 +174,10 @@ public class TreeUnit : MonoBehaviour
         for (int i = 0; i < rigidbodies.Length; i++)
         {
             rigidbodies[i].isKinematic = true;
-            rigidbodies[i].transform.position = transforms[i];
+            if (transforms.Count > 0)
+            {
+                rigidbodies[i].transform.localPosition= transforms[i];
+            }
             rigidbodies[i].velocity = new Vector3(0f, 0f, 0f);
             rigidbodies[i].angularVelocity = new Vector3(0f, 0f, 0f);
             rigidbodies[i].angularDrag = 0f;
