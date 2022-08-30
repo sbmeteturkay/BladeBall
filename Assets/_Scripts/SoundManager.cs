@@ -32,7 +32,8 @@ public class SoundManager : MonoBehaviour
 		leafFall,
 		treeFall,
 		treeDestroy,
-		tradeCoin
+		tradeCoin,
+		levelUp
 	}
 	private void Awake()
 	{

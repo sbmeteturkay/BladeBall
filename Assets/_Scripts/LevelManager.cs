@@ -11,7 +11,7 @@ namespace LevelSystem
         public int level=1;
         [SerializeField] Vector3 spaceBetweenLevels;
         public GameObject[] levelContainers;
-        [SerializeField] PlayerPositionState playerPositionState;
+        public static PlayerPositionState playerPositionState;
 
         LevelDesingUnit[] levelDesingUnits=new LevelDesingUnit[3];
         int brokenTrees = 0;
@@ -101,6 +101,7 @@ namespace LevelSystem
         }
         public void LevelUp()
         {
+            SoundManager.Instance.Play(SoundManager.Sounds.levelUp, true);
             Debug.Log("LEVEL UPPPPPPPPPPP");
             brokenTrees = 0;
             levelDesingUnits[(int)playerPositionState].nextCollider.enabled = false;
