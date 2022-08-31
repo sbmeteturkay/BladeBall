@@ -16,9 +16,9 @@ MonoBehaviour:
   startValue: 10
   upgradeName: CAPACITY
   level: 1
-  maxLevel: 20
+  maxLevel: 25
   infinite: 0
-  price: 10
+  price: 15
   priceIncreaseRate: 2
   moneyType: 1
   value: 10

@@ -15,12 +15,12 @@ MonoBehaviour:
   startPrice: 30
   startValue: 3.5
   upgradeName: SPEED
-  level: 12
+  level: 1
   maxLevel: 12
   infinite: 0
-  price: 96
+  price: 30
   priceIncreaseRate: 1
   moneyType: 1
-  value: 13.400001
+  value: 4.2
   valueIncreaseRate: 0.15
   referenceImage: {fileID: 21300000, guid: 1df593e87d86d8f439db0c3d0e752652, type: 3}

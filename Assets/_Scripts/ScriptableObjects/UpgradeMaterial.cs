@@ -77,6 +77,7 @@ public class UpgradeMaterial:ScriptableObject
             UpdatePrice();
             UpgradeValue();
             UpdateLevel();
+            SavePlayerPref();
             OnValueChange?.Invoke(this);
             return true;
         }
@@ -84,6 +85,30 @@ public class UpgradeMaterial:ScriptableObject
             return false;
 
     }
-
+    public void GetPlayerPref()
+    {
+        if (PlayerPrefs.HasKey(upgradeName + "price"))
+        {
+            price = PlayerPrefs.GetInt(upgradeName + "price");
+            level = PlayerPrefs.GetInt(upgradeName + "level");
+            value = PlayerPrefs.GetFloat(upgradeName + "value");
+            Debug.Log("scriptable awake");
+            OnValueChange?.Invoke(this);
+        }
+        else
+        {
+            level = 1;
+            price = startPrice;
+            value = startValue;
+            SavePlayerPref();
+        }
+    }
+    void SavePlayerPref()
+    {
+        PlayerPrefs.SetInt(upgradeName + "level", level);
+        PlayerPrefs.SetInt(upgradeName + "price", price);
+        PlayerPrefs.SetFloat(upgradeName + "value", value);
+        PlayerPrefs.Save();
+    }
 }
 

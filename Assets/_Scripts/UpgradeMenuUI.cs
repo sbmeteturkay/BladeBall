@@ -31,6 +31,7 @@ public class UpgradeMenuUI : MonoBehaviour
 		{
 			//Create a Character and its corresponding UI element (uiItem)
 			UpgradeMenuItem uiItem = Instantiate(itemPrefab, UpgradeItemsContainer).GetComponent<UpgradeMenuItem>();
+			upgradeMaterials[i].GetPlayerPref();
 			upgradeMenuItems.Add(uiItem);
 			//Move item to its position
 			uiItem.SetItemPosition(Vector2.right * i * (itemHeight + itemSpacing));
@@ -52,7 +53,7 @@ public class UpgradeMenuUI : MonoBehaviour
 				//Character is not Purchased yet
 				//uiItem.OnItemPurchase(i, OnItemPurchased);
 			}
-
+			
 			//Resize Items Container
 			/*UpgradeItemsContainer.GetComponent<RectTransform>().sizeDelta =
 				Vector2.zero * ((itemHeight + itemSpacing) * upgradeMaterials.Length + itemSpacing);*/

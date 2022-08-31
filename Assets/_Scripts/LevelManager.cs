@@ -18,6 +18,8 @@ namespace LevelSystem
         [Header("Level UI")]
         [SerializeField] Image levelProgressBar;
         [SerializeField] TMPro.TMP_Text currentLevel, nextLevel;
+
+        [SerializeField] ParticleSystem levelUpFX;
         private void Awake()
         {
             OnStateChange += LevelDesing_OnStateChange;
@@ -120,6 +122,7 @@ namespace LevelSystem
             Debug.Log(playerPositionState);
             OnStateChange?.Invoke(playerPositionState);
             levelProgressBar.fillAmount = 0;
+            levelUpFX.Play();
         }
         Level GetLevelDataFromResource(int i)
         {

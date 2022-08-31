@@ -36,7 +36,7 @@ public class TreeUnit : MonoBehaviour
     
     int spawnedIndex;
     public static int spawnedLevelIndex = 1;
-    
+    [SerializeField] AudioSource source;
     [Header("Rigidbodys")]
     [SerializeField] Rigidbody[] topLeafsRB;
     [SerializeField] Rigidbody[] botLeafsRB;
@@ -86,6 +86,7 @@ public class TreeUnit : MonoBehaviour
                 wood.enabled = false;
                 GameDataManager.AddCoins(copiedTree.givenGold, CollectType.wood);
                 SoundManager.Instance.Play(SoundManager.Sounds.treeDestroy,false);
+                //source.Play();
                 if (spawnedLevelIndex == spawnedIndex)
                 {
                     LevelManager.OnTreeBreak.Invoke();
