@@ -28,7 +28,6 @@ public class Chopper : ScriptableObject
     }
     public void SetCapacity(float value)
     {
-        Debug.LogError("set capacit"+value);
         capacity = (int)value;
     }
     public void SetEnergy(float value)

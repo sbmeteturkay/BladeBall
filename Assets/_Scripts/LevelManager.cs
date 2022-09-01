@@ -8,11 +8,12 @@ namespace LevelSystem
     {
         public event Action<PlayerPositionState> OnStateChange;
         public static Action OnTreeBreak;
+        [Header("Level Creator Info")]
         public int level=1;
         [SerializeField] Vector3 spaceBetweenLevels;
         public GameObject[] levelContainers;
         public static PlayerPositionState playerPositionState;
-
+        [SerializeField] GameObject[] inSceneForestAssets;
         LevelDesingUnit[] levelDesingUnits=new LevelDesingUnit[3];
         int brokenTrees = 0;
         [Header("Level UI")]
@@ -34,7 +35,12 @@ namespace LevelSystem
             SetLevelText();
             OnTreeBreak += LevelManager_OnTreeBreak;
             levelProgressBar.fillAmount =(float) ((float)brokenTrees / (((float)levelDesingUnits[(int)playerPositionState].TreeCount / 10) * 9f));
-
+           
+            for(int i = 0; i < inSceneForestAssets.Length; i++)
+            {
+                levelDesingUnits[0].AddPrefabForests(inSceneForestAssets[i],i);
+            }
+            
             OnStateChange.Invoke(playerPositionState);
         }
 

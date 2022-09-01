@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using LevelSystem;
+using DG.Tweening;
 public class TreeUnit : MonoBehaviour
 {
     public class TreeInstance
@@ -70,15 +71,19 @@ public class TreeUnit : MonoBehaviour
         switch (state)
         {
             case TreeState.full:
+                StaticTree.transform.DOShakePosition(1, 0.1f);
                 break;
             case TreeState.leafless:
                 OpenChildRigidbodys(TopLeafs,topLeafsRB,topLeafsRBTransforms);
+                BotLeafs.transform.DOShakePosition(1,0.1f);
+                wood.transform.DOShakePosition(1, 0.1f);
                 //SoundManager.Instance.Play(SoundManager.Sounds.leafFall,false);
                 break;
             case TreeState.chopped:
                 OpenChildRigidbodys(BotLeafs,botLeafsRB,botLeafsRBTransforms);
                 fullTree.enabled = false;
                 wood.enabled = true;
+                wood.transform.DOShakePosition(1, 0.1f);
                 //SoundManager.Instance.Play(SoundManager.Sounds.treeFall,false);
                 break;
             case TreeState.destroyed:
@@ -108,6 +113,10 @@ public class TreeUnit : MonoBehaviour
     }
     void CheckState()
     {
+        if(copiedTree.currentHealth > tree.health / 3 * 2)
+        {
+            CopiedTree_OnEventChange(TreeState.full);
+        }
         if (copiedTree.treeState==TreeState.full && copiedTree.currentHealth <= tree.health / 3 * 2)
         {
             if(copiedTree.treeState!= TreeState.leafless)

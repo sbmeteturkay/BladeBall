@@ -44,7 +44,7 @@ namespace LevelSystem
         public void SpawnTrees()
         {
             TreeUnit.spawnedLevelIndex= PlayerPrefs.GetInt("level");
-            Debug.Log(TreeSpawnParent.transform.GetChild(0).gameObject.name);
+            //Debug.Log(TreeSpawnParent.transform.GetChild(0).gameObject.name);
             //Destroy(TreeSpawnParent.transform.GetChild(0).gameObject);
             //TreeSpawnParent.transform.GetChild(0).gameObject.SetActive(false);
             if (CheckPrefab((int)level.treeModel))
@@ -65,7 +65,7 @@ namespace LevelSystem
         }
         public void ReuseSpawnedTrees(int i)
         {
-            Debug.Log(TreeSpawnParent.transform.GetChild(0).gameObject.name);
+            
             //Destroy(TreeSpawnParent.transform.GetChild(0).gameObject);
             //TreeSpawnParent.transform.GetChild(0).gameObject.SetActive(false);
             //var forest = GetPrefabFromResource((int)level.treeModel);
@@ -76,7 +76,8 @@ namespace LevelSystem
             Debug.Log(obj.transform.position);
             TreeCount = obj.transform.childCount * obj.transform.GetChild(0).gameObject.transform.childCount;
             Debug.Log("Tree count" + TreeCount);
-            OnTreeReload.Invoke();
+            obj.SetActive(true);
+            OnTreeReload?.Invoke();
         }
         public void SetTreeColors()
         {
@@ -139,7 +140,11 @@ namespace LevelSystem
             levelIndex = level;
             SetData();
         }
-
+        public void AddPrefabForests(GameObject prefab,int i)
+        {
+            assetForests.Add(prefab);
+            assetIndex.Add(i);
+        }
     }
 }
 
