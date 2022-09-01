@@ -6017,7 +6017,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.267
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -8995,9 +8995,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: cfc84fd48a7ef204a8f31f2178a904e2, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: cfc84fd48a7ef204a8f31f2178a904e2, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: cfc84fd48a7ef204a8f31f2178a904e2, type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: cfc84fd48a7ef204a8f31f2178a904e2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: -5661718239813337141, guid: 7dd979e86e93e09408cf5bb54918bd1e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfc84fd48a7ef204a8f31f2178a904e2, type: 3}
 --- !u!1 &849501351
@@ -10398,9 +10410,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: cfc84fd48a7ef204a8f31f2178a904e2, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: cfc84fd48a7ef204a8f31f2178a904e2, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: cfc84fd48a7ef204a8f31f2178a904e2, type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: cfc84fd48a7ef204a8f31f2178a904e2, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: -5661718239813337141, guid: 7dd979e86e93e09408cf5bb54918bd1e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfc84fd48a7ef204a8f31f2178a904e2, type: 3}
 --- !u!1 &1136014767
@@ -11345,9 +11369,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 7b3b4ab8d7928744ab2e2de6c2f74437, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 7b3b4ab8d7928744ab2e2de6c2f74437, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 7b3b4ab8d7928744ab2e2de6c2f74437, type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 7b3b4ab8d7928744ab2e2de6c2f74437, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: -5661718239813337141, guid: 7dd979e86e93e09408cf5bb54918bd1e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7b3b4ab8d7928744ab2e2de6c2f74437, type: 3}
 --- !u!1 &1367522086
@@ -13340,9 +13376,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2300000, guid: 1b9330fa532f9d94d9999d5eb66f604e, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 1b9330fa532f9d94d9999d5eb66f604e, type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 1b9330fa532f9d94d9999d5eb66f604e, type: 3}
+      propertyPath: m_ReflectionProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 1b9330fa532f9d94d9999d5eb66f604e, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+      objectReference: {fileID: -5661718239813337141, guid: 7dd979e86e93e09408cf5bb54918bd1e, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b9330fa532f9d94d9999d5eb66f604e, type: 3}
 --- !u!1 &1613748429
@@ -13897,15 +13945,15 @@ MonoBehaviour:
   LowPitchRange: 0.95
   HighPitchRange: 1.5
   audioClips:
-  - {fileID: 8300000, guid: fc999a0155f79a1498a9d8710116c658, type: 3}
-  - {fileID: 8300000, guid: 5e39a3c7cf4cfa84c88e2585d9d33476, type: 3}
+  - {fileID: 8300000, guid: 10ad3453c5a5b9747a9ce4b088b4045f, type: 3}
+  - {fileID: 8300000, guid: 6a686e21fc620844e9f7ce588feca841, type: 3}
   - {fileID: 8300000, guid: 3710c5080066c3f4baa6fe9b3195596d, type: 3}
   - {fileID: 8300000, guid: 496836eab984576468c29dc54bb5003a, type: 3}
   - {fileID: 8300000, guid: 6895dfbff4c392b41a427b5bdff9847a, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 8300000, guid: 07ca6b7f862a6674abc120140375916b, type: 3}
+  - {fileID: 8300000, guid: a24bd5900445082419f0e1535f368659, type: 3}
   - {fileID: 8300000, guid: 22d28c3818b42c148881242a9510ef71, type: 3}
 --- !u!1 &1737117792 stripped
 GameObject:
