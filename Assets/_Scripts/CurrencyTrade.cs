@@ -58,7 +58,7 @@ public class CurrencyTrade : MonoBehaviour
                 case CollectType.coin:
                     if (GameDataManager.CanSpendCoins(_givenAmount, CollectType.coin))
                     {
-                        GameDataManager.SpendCoins(_givenAmount*GameDataManager.GetCoins()/10, give);
+                        GameDataManager.SpendCoins(_givenAmount, give);
                         GameDataManager.AddCoins(_takenAmount, take);
                         //SoundManager.Instance.Play(SoundManager.Sounds.tradeCoin, true, false);
                         tradeSound.PlayOneShot(tradeSound.clip);

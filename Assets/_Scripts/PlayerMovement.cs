@@ -10,6 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Animator animator;
     bool Movement;
     public float movementSpeed = 6;
+    float fullMultiplier = 1f;
     // Start is called before the first frame update
     void Start()
     {
@@ -41,12 +42,16 @@ public class PlayerMovement : MonoBehaviour
 
             transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, 0);
 
-            transform.Translate(Vector3.forward * movementSpeed * Time.deltaTime);
+            transform.Translate(movementSpeed*fullMultiplier * Time.deltaTime * Vector3.forward);
         }
         else
         {
             playerSprite.gameObject.SetActive(false);
         }
+        if (PlayerState.Instance.State != BladeState.Full)
+            fullMultiplier = 1;
+        else
+            fullMultiplier = 1.5f;
     }
     void SetSpeed(float _speed)
     {

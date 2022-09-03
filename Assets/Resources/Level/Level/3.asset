@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: 3
   m_EditorClassIdentifier: 
   groundType: 1
-  groundColor: {r: 0.7122642, g: 1, b: 0.98220235, a: 1}
+  groundColor: {r: 0.40970984, g: 0.9339623, b: 0.8980546, a: 1}
   treeModel: 0
   firstTreeColor: {r: 0.5093005, g: 0.7052272, b: 0.990566, a: 1}
   secondTreeColor: {r: 0.13679248, g: 0.4876899, b: 1, a: 1}

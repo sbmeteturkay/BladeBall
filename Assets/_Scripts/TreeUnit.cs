@@ -72,6 +72,7 @@ public class TreeUnit : MonoBehaviour
         {
             case TreeState.full:
                 StaticTree.transform.DOShakePosition(1, 0.1f);
+                source.PlayOneShot(source.clip);
                 break;
             case TreeState.leafless:
                 OpenChildRigidbodys(TopLeafs,topLeafsRB,topLeafsRBTransforms);

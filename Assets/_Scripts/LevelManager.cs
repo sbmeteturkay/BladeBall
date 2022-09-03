@@ -133,8 +133,11 @@ namespace LevelSystem
         Level GetLevelDataFromResource(int i)
         {
             //to avoid default level which is 0, TYPE LAST NUMBER OF CREATED LEVELS
+            string filePath = "Assets/Resources/Level/Level";
+            int fileCount=Directory.GetFiles(filePath).Length;
+            Debug.Log(fileCount);
             i--;
-            i %= 6;
+            i %= fileCount-1;
             i++;
             //
             string path = "Level/Level/"+ i.ToString();
